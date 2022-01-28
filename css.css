@@ -1,0 +1,263 @@
+.spinner {
+    visibility: hidden;
+    width: 16px;
+    height: 16px;
+    box-shadow: 0 30px, 0 -30px;
+    border-radius: 4px;
+    background: currentColor;
+    display: block;
+    margin: auto;
+    position: relative;
+    left: -30px;
+    color: rgb(255, 255, 255);
+    transform: translateY(30px);
+    box-sizing: border-box;
+    animation: animloader 2s ease infinite;
+  }
+  .spinner::after,
+  .spinner::before {
+    content: '';  
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    box-shadow: 0 30px, 0 -30px;
+    border-radius: 4px;
+    background: currentColor;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 30px;
+    top: 0;
+    animation: animloader 2s 0.2s ease infinite;
+  }
+  .spinner::before {
+    animation-delay: 0.4s;
+    left: 60px;
+  }
+  
+  @keyframes animloader {
+    0% {
+      top: 0;
+      color: rgb(255, 255, 255);
+    }
+    50% {
+      top: 30px;
+      color: rgba(255, 255, 255, 0.2);
+    }
+    100% {
+      top: 0;
+      color: rgb(255, 255, 255);
+    }
+  }
+      
+  .alert {
+    visibility: none;
+    margin-top: 70px;
+    padding: 20px;
+    background-color: #36c5f4;
+    color: white;
+    z-index: 1000;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    /* float: right; */
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+
+body {padding: 0px;
+    margin:0px;
+    color: #fff;
+    background-color:#fff;} 
+
+/* Create a Parallax Effect */
+.bgimg-1{
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}      
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+background-image: url('images/background_color.jpg');
+min-height: 850px;
+opacity: 100%;
+}
+
+.digitaltwin{
+position: relative; 
+color: #000000;
+opacity: 100%;
+
+}
+
+.digitaltwinZone{
+overflow: hidden;
+position: relative;
+}
+
+.digitaltwinback {    
+opacity: 0.2;
+position: absolute;
+left: 0;
+top: 0;
+}
+
+.digitaltwinpoem{    
+border-radius: 16px;
+padding: 32px;
+background-color: #fff;
+width: 600px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+button {
+  border-radius: 4px;
+  padding: 8px 16px 8px 16px;
+}
+
+.photogrid1 {
+  float:left;
+  padding: 16px;
+  width: 230px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .digitaltwinpoem{
+    width:100%;
+    float:none;
+  }
+  .photogrid1 {
+    width:100%;
+    float:none;
+  }
+}
+
+.date {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  color: rgb(159, 159, 159);
+  }
+
+.press_title {
+  font-family: inherit;
+  line-height: 1.45;
+  font-weight: bold;
+  font-size: 16px;
+  color: #1f1f1f;
+  -webkit-text-size-adjust: none;
+  }
+
+
+.loader {
+  align-items: center;
+  width: 400px;
+  color: #fff;
+  left: 50%;  
+  display:none;
+}
+
+/* colours */
+:root {
+  --purple: #6446b4;
+  --white: #ffffff; 
+}
+
+ /* Basic Button Style */
+.btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid var(--purple);
+  border-radius: 0.6em;
+  /* color: red; */
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: auto;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  /* text-transform: uppercase; */
+  /* font-family: 'Montserrat', sans-serif; */
+  font-weight: 700;
+}
+
+.btn:hover
+
+.btn:focus {
+  color: var(--white);
+  outline: 0;
+}
+
+/* BUTTON for generate poems */
+.btn1 {
+  color: var(--white);
+  transition: all 150ms ease-in-out; 
+}
+.btn1:hover {
+  box-shadow: 0 0 10px 0 var(--purple) inset, 0 0 10px 4px var(--purple);
+}
+
+.btn_poems {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid var(--white);
+  border-radius: 0.6em;
+  /* color: red; */
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: auto;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  /* text-transform: uppercase; */
+  /* font-family: 'Montserrat', sans-serif; */
+  font-weight: 700;
+}
+
+.btn_poems:hover
+
+.btn_poems:focus {
+  color: var(--white);
+  outline: 0;
+}
+
+/* BUTTON for Poems */
+.btn2 {
+  color: var(--white);
+  transition: all 150ms ease-in-out;
+}
+.btn2:hover {
+  box-shadow: 0 0 10px 0 var(--white) inset, 0 0 10px 4px var(--white);
+}

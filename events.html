@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="css.css">
+
+        <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif}
+        
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Side Navigation -->
+    <div class="w3-container w3-padding-16">
+        <div id="mySidebar" class="w3-card-4 " style="max-width:550px;margin-left: 100px; " >
+            <a id="myBtn" onclick="myFunc('Demo')" href="javascript:void(0)" class=" w3-button w3-block w3-left-align w3-black">Fecha + localizacion<i class="fa fa-caret-down w3-margin-left"></i></a>
+            <div id="Demo" class="w3-hide w3-black ">
+                <img class="w3-round w3-margin" src="/events/2021_nov/The_poetry_of_algorithm_becomes_art_at_New_York_gallery/TheMyntGalleryFlyer.jpg" style="width:15%;"><span class="w3-opacity w3-large">Jane Doe</span>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    <script>
+
+        function myFunc(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show"; 
+            } else { 
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+    </body>
+</html>
