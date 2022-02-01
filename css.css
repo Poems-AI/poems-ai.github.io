@@ -261,3 +261,9 @@ button {
 .btn2:hover {
   box-shadow: 0 0 10px 0 var(--white) inset, 0 0 10px 4px var(--white);
 }
+
+.eventGrid {
+  float:left;
+  padding: 32px;
+  width: 600px;
+}
