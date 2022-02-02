@@ -143,17 +143,6 @@ button {
 }
 
 
-@media screen and (max-width: 600px) {
-  .digitaltwinpoem{
-    width:100%;
-    float:none;
-  }
-  .photogrid1 {
-    width:100%;
-    float:none;
-  }
-}
-
 .date {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -262,8 +251,33 @@ button {
   box-shadow: 0 0 10px 0 var(--white) inset, 0 0 10px 4px var(--white);
 }
 
-.eventGrid {
+.eventgrid {
   float:left;
   padding: 32px;
-  width: 600px;
+  width: 300px;
+  
+}
+
+.upmargin{
+  margin-top: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  .digitaltwinpoem{
+    width:100%;
+    float:none;
+  }
+  .photogrid1 {
+    width:100%;
+    float:none;
+  }
+
+  .eventgrid {
+    width:100%;
+    float:none;
+  }
+
+  .upmargin{
+    margin-top: 0px;
+  }
 }
