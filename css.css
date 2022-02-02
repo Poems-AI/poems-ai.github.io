@@ -258,9 +258,7 @@ button {
   
 }
 
-.upmargin{
-  margin-top: 100px;
-}
+
 
 @media screen and (max-width: 600px) {
   .digitaltwinpoem{
@@ -277,7 +275,5 @@ button {
     float:none;
   }
 
-  .upmargin{
-    margin-top: 0px;
-  }
+  
 }
