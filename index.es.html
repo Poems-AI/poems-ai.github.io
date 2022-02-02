@@ -63,65 +63,30 @@
     <a href="#media" onclick="w3_close()" class="w3-bar-item w3-button">Media</a>
     <a href="prensa.html" onclick="w3_close()" class="w3-bar-item w3-button" target="_blank">Prensa</a>
   </nav>
- 
-  
-  
-  <div id="vanta_efect" style="height: 1000px;" >
 
-    <!-- Top menu -->
-    <div class=" w3-top w3-xlarge  w3-padding w3-left-align closebtn"  onclick="w3_open()" style="margin: 20px; color: #fff;">☰</div>
-    <div class=" w3-xlarge w3-padding " style="max-width:1200px;margin:auto; color: #fff;">
-      <div class="w3-center w3-padding">Poesia + IA = ARTE </div>
-      <div class="w3-display-topright w3-small w3-padding"> 
-        <a href="index.es.html">ESP</a> /
-        <a href="index.en.html">ENG</a>
-      </div>
+  <!-- Top menu -->
+  <div class=" w3-top w3-xlarge  w3-padding w3-left-align closebtn"  onclick="w3_open()" style="margin: 20px; color: #fff;">☰</div>
+  <div class=" w3-xlarge w3-padding " style="max-width:1200px;margin:auto; color: #fff;">
+    <div class="w3-center w3-padding">Poesia + IA = ARTE </div>
+    <div class="w3-display-topright w3-small w3-padding"> 
+      <a href="index.es.html">ESP</a> /
+      <a href="index.en.html">ENG</a>
     </div>
-
-  <!-- AI Section -->
-    <div class="digitaltwinZone" style="margin-top: 100px;">  
-      <div class="digitaltwin w3-container  w3-center w3-padding-32" id="AI" >  
-        
-        <h3 style="color: #fff;">Interacciona con la IA</h3><br>
-        <span id="spinner" class="spinner">Cargando la IA</span>
-
-        <div class="w3-center w3-margin-bottom">
-          <input id="poeminput" class=" w3-round-large" type="text" size="40" style=" height:32px; text-align: center;" onkeydown="generate(this)" placeholder="Escribe una frase aquí"><br> <br> 
-        </div>
-          
-        <button class=" btn  btn1 " onclick="generatePoem()">Generar poema</button>
-        
-        <div id="loading" class="w3-container w3-center w3-center loader">
-          loading AI
-          <div class="w3-border w3-center">
-            <div id="loadingbar" class="w3-grey " style="height:24px;width:0%"> </div>
-          </div>
-        </div>
-
-        <div class="w3-row-padding w3-padding-16 w3-center" >
-          <pre id="poemoutput"  class="digitaltwinpoem" ></pre><br><br>
-        </div>
-            
-      </div>
-    </div>
-
   </div>
 
-  <div id="chromeAlert" class="alert w3-padding w3-content" style="max-width:1200px;margin-top:100px">
+  <!-- Chrome alert -->
+  <div id="chromeAlert" class="alert w3-padding w3-content" style="max-width:1200px;margin-top:50px">
     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
     <strong>Aviso.</strong> Para una mejor experiencia utiliza <a target="_blank" href="https://www.google.com/chrome">Chrome browser</a>.
   </div>
 
-
-  <hr id="experimentation" style="opacity: 0%;" >
-
   <!-- !PAGE CONTENT! -->
-
-  <div class="w3-main w3-content w3-margin-32" style="max-width:1200px;height:1200px; color: #000;">
+  <div id="experimentation" class="w3-main w3-content w3-margin-16" style="max-width:1200px;height:1200px; color: #000;">
 
     <!-- First Photo Grid-->
-    <h1 class="w3-padding-32" style="text-align: center;margin-top:100px"> ( meta ) VERSOS</h1>
-
+    <h1 class="w3-padding-32" style="text-align: center;"> ( meta ) VERSOS</h1>
+    <p class="w3-center">Un poemario sobre arte y blockchain.</p>
+    <p class="w3-center" style="margin-bottom: 100px;">Experimenta las representaciones gráficas generadas por la IA a partir de los poemas de Marcos de la Fuente.</p>
     <div class="w3-row-padding  w3-center" >
       <div class="photogrid1" >
         <a href="vis2.html?poem=inimitables.es">
@@ -129,9 +94,7 @@
         <h3>Poesía en el espejo</h3>
         <br>
         <p>En primer plano, el poema aparece al ritmo de la lectura del poeta y la IA interactúa con la imagen captada por la cámara del dispositivo.</p>
-          
       </div>
-      
 
       <div class="photogrid1" >
         <a href="vis1.html?poem=picasso_in_botswana.es">
@@ -162,21 +125,44 @@
         <h3>Superposición</h3>
         <br>
         <p>Este experimento busca representar la superposición de las ideas entre el ser humano y su interpolación digital, y cómo el concepto final preserva el valor a transmitir.</p>
-        
       </div>
-
-      
     </div>
     
-  
- <hr id="AI" style="opacity: 0%;" >
 
+   <!-- AI Section -->
+   <div id="vanta_efect" style="height: 1000px;" >
+    <div class="digitaltwinZone" style="margin-top: 200px;">  
+      <div class="digitaltwin w3-container  w3-center w3-padding-32" id="AI" >  
+        
+        <h3 style="color: #fff;margin-top: 200px;">Interacciona con la IA</h3><br>
+        
 
-  <hr style="margin-bottom: 100px;"> 
-  <hr id="about" style="opacity: 0%;" >
+        <div class="w3-center w3-margin-bottom">
+          <input id="poeminput" class=" w3-round-large" type="text" size="40" style=" height:32px; text-align: center;" onkeydown="generate(this)" placeholder="Escribe una frase aquí"><br> <br> 
+        </div>
+          
+        <span id="spinner" class="spinner"></span>
+        <button class=" btn  btn1 " onclick="generatePoem()">Generar poema</button>
+        
+        <div id="loading" class="w3-container w3-center w3-center loader">
+          
+          <div class="w3-border w3-center">
+            <div id="loadingbar" class="w3-grey " style="height:24px;width:0%"> </div>
+          </div>
+        </div>
+        
+        <div class="w3-row-padding w3-padding-16 w3-center" >
+          
+          <pre id="poemoutput"  class="digitaltwinpoem" ></pre><br><br>
+        </div>
+            
+      </div>
+    </div>
+
+  </div>  <!-- End AI Section -->
 
   <!-- About Section -->
-    <div  class="w3-container w3-padding-32 w3-center" style="color: #000"  >  
+    <div  id="about"  class="w3-container w3-padding-32 w3-center" style="color: #000; margin-top: 100px;"  >  
       <h3>El Poeta</h3><br>
       <img src="images/Marcos_enlaRia.jpg" alt="Me" class="w3-image" style="display:block;margin:auto" width="800" height="533">
       <div class="w3-padding-32">

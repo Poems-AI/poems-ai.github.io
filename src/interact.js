@@ -96,7 +96,7 @@ function loadingModel(){
 }
 
 function generatePoem(){
-    spinner.style.visibility = "hidden"
+    spinner.style.visibility = "visible"
     
     initText=''
 
