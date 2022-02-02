@@ -258,6 +258,10 @@ button {
   
 }
 
+.nfts{
+  border: none;
+  margin-top: 100px;
+}
 
 
 @media screen and (max-width: 600px) {
@@ -275,5 +279,9 @@ button {
     float:none;
   }
 
+  .nfts{
+    width:100%;
+    float:none;
+  }
   
 }
