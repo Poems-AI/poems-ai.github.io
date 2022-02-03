@@ -260,9 +260,14 @@ button {
 
 .nfts{
   border: none;
-  margin-top: 100px;
+  padding-top: 20px;
 }
 
+.nftsborder{
+  border-width: 1px; 
+  border-style: solid; 
+  border-color: #fff; 
+}
 
 @media screen and (max-width: 600px) {
   .digitaltwinpoem{
@@ -282,6 +287,13 @@ button {
   .nfts{
     width:100%;
     float:none;
+  }
+  .nftsimage{
+    width: 360px;
+  }
+
+  .nftsborder{
+    border: none;
   }
   
 }
