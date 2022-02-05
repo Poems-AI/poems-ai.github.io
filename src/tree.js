@@ -19,6 +19,7 @@ function setup() {
 
   createCanvas(windowWidth, windowHeight);
   originalPoem=poemGenerate[poemGenerate.length-1]
+  console.log(originalPoem)
   poemWords = originalPoem.split(" ")
   frameRate(30)
   textAlign(CENTER, CENTER); textFont('monospace', 16); textStyle(BOLD)
