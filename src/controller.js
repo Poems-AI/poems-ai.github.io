@@ -10,7 +10,7 @@ function keyTyped() {
             window.location.href="vis1.html?poem=picasso_in_botswana.es"
             break;
         case "3":
-            window.location.href="vis3.html?poem=new_worlds.es"
+            window.location.href="vis3.html?poem=new_worlds.ga"
             break;
         case "4":
             window.location.href="vis4.html?poem=metareality.es"
