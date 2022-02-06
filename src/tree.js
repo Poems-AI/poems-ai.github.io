@@ -10,26 +10,31 @@ let startTime = Math.ceil((Date.now() / speed))
 let sin = []
 let shift = 0.9
 let treeHight = 4
+let originalPoem = ""
 
 function preload() {
   poemGenerate = loadStrings('poems/'+get_poem_name()+'.AI.txt');
+  originalPoem = loadStrings('poems/'+get_poem_name()+'.txt');
+
 }
 
 function setup() {
 
   createCanvas(windowWidth, windowHeight);
-  originalPoem=poemGenerate[poemGenerate.length-1]
-  console.log(originalPoem)
-  poemWords = originalPoem.split(" ")
+  poemWords = originalPoem.join(' ').replace("   "," ").split(" ")
+  poemWords = poemWords.filter((el) => {
+    return el.trim() != '';;
+  });
+
   frameRate(30)
   textAlign(CENTER, CENTER); textFont('monospace', 16); textStyle(BOLD)
 
   for(x=0;x<360;x++){
     sin.push(Math.sin(x))
   }
-  poemsBranch = calculateDistance(poemGenerate)
+  poemsBranch = calculateDistance( poemGenerate )
   poemsLength = poemsBranch.length
-  // distances = [[0,0,2,1,2,2,3,1,1,1,1,0,0,1,-1,-4,-4]]
+
 }
 
 function draw() {
@@ -52,6 +57,7 @@ function printwords(poemcount){
   strokeWeight(2)
   stroke(0,0,0)
   fill(255, 255, 255)
+
   text(poemWords[poemcount].replace(",","").replace(".",""),0,windowHeight/2,windowWidth)
   return poemWords[poemcount]
 }
@@ -84,12 +90,20 @@ function createLine(points, strokeLevel, opacity){
 function calculateWeights(poems){
   let poemsWeights = []
 
+  poems.splice(-1,1);
+
   poems.forEach(element => {
+    
     words_lenght = []
+    element.replace("  "," ")
     element.split(" ").forEach(word => {
+     
       words_lenght.push(word.length)
+      
     });
+    
     poemsWeights.push(words_lenght)
+    
   });
 
   return poemsWeights

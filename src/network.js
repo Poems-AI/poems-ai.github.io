@@ -24,7 +24,15 @@ function setup() {
 
   generateMap(poemWords)
 
-  cnv=createCanvas(windowWidth, windowHeight)
+  if ( window.location.href == "https://www.artpoet.io/index.en.html" || window.location.hostname == "https://www.artpoet.io/index.es.html" ){
+    cnv=createCanvas(500, 900)
+    console.log("si estoy pasando por el ajuste del canvas")
+  } else {
+    cnv=createCanvas(windowWidth, windowHeight)
+    console.log("si estoy pasando por el ajuste del canvas")
+    console.log(window.location.href)
+  }
+  
   textAlign(CENTER, CENTER); textFont('monospace', 16); textStyle(BOLD)
 
   strokeWeight(2); fill(100)
