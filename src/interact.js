@@ -152,8 +152,8 @@ function generate(element){
   }
 }
 
-generatePoem()
+// generatePoem()
 
-input = document.getElementById('poeminput');
-input.focus();
-input.select();
+// input = document.getElementById('poeminput');
+// input.focus();
+// input.select();
