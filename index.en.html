@@ -45,7 +45,7 @@
   <body>
  
 
-    <!-- Sidebar (hidden by default) -->
+  <!-- Sidebar (hidden by default) -->
   <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left w3-black" style="display:none;z-index:2;width:40%;min-width:300px;color: #fff;" id="mySidebar">
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button">Close Menu</a>
     <a href="#experimentation" onclick="w3_close()" class="w3-bar-item w3-button">Experimentation</a>
@@ -58,58 +58,34 @@
  
   
   <!-- Top menu -->
-  <!-- <div class="w3-top">
-    <div class="w3-black w3-xlarge w3-padding" style="max-width:1200px;margin:auto;">
-      <div class="w3-button w3-padding w3-left" onclick="w3_open()">☰</div>
-      <div class="w3-center w3-padding"> Poetry + AI = ART </div>
+  <div class=" w3-top w3-xlarge  w3-padding w3-left-align closebtn"  onclick="w3_open()" style="margin: 20px; color: #fff;">☰</div>
+    <div class=" w3-xlarge w3-padding " style="max-width:1200px;margin:auto; color: #fff;">
+      <div class="w3-center w3-padding-64 ">
+        <img src="images/Poetry+AI color-25.png" alt="Logo Poetry+AI=Art" width="80%" height="auto" >
+      </div>
       <div class="w3-display-topright w3-small w3-padding"> 
         <a href="index.es.html">ESP</a> /
         <a href="index.en.html">ENG</a>
       </div>
     </div>
-  </div> -->
 
-  <div class=" w3-top w3-xlarge  w3-padding w3-left-align closebtn"  onclick="w3_open()" style="margin: 20px; color: #fff;">☰</div>
-  <div class=" w3-xlarge w3-padding " style="max-width:1200px;margin:auto; color: #fff;">
-    <div class="w3-center w3-padding-64 ">
-      <img src="images/Poetry+AI color-25.png" alt="Logo Poetry+AI=Art" width="80%" height="auto" >
+    <!-- Chrome alert -->
+    <div id="chromeAlert" class="alert w3-padding w3-content" style="max-width:1200px;margin-top:50px">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <strong>Notice.</strong> To have a better experience you should use a <a target="_blank" href="https://www.google.com/chrome">Chrome browser</a>.
     </div>
-    <div class="w3-display-topright w3-small w3-padding"> 
-      <a href="index.es.html">ESP</a> /
-      <a href="index.en.html">ENG</a>
+
+    <!-- NFTs Collection -->
+    <div class=" w3-center " style="margin-top: 150px; margin-bottom: 150px;" > 
+        <a href="https://rarible.com/poetry_ai_art" target="_blank"  >
+          <img src="images/web_banner_big.jpg" style="max-width: 100%;height: auto;" >
+        </a>
     </div>
-  </div>
 
-  <!-- Chrome alert -->
-  <div id="chromeAlert" class="alert w3-padding w3-content" style="max-width:1200px;margin-top:50px">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-    <strong>Notice.</strong> To have a better experience you should use a <a target="_blank" href="https://www.google.com/chrome">Chrome browser</a>.
-  </div>
-
-  <!-- NFTs Collection -->
-  <!-- <div class="w3-row  w3-padding-64 w3-content" style="max-width:1200px;margin-top:50px">
-    <div class="w3-half w3-padding-32 " style="max-width:600px;margin-top:50px">
-      <h1>Ya esta disponible la primera colecion de NFTs</h1>
-    </div>
-    <div class="w3-half w3-padding-32 " style="max-width:400px ;margin-top:50px; ">
-      <p>La collecion se llama Metareality, los NFTs fueron creados en base al poema Metareality de Marcos de la Fuente 
-        conjuntamente con una Inteligencia Artificial siguiendo la tecnica de transferencia de estilo basado en New york.
-        La colecion consta de 54 NFTs, el primero es "Metareality artwork #0" y representa el titulo del poema.
-        El resto de los NFTs con el mismo nombre se enumeran desde el 1 al 53.</p>
-    </div> -->
-   
-  </div>
-  <div class=" w3-center " style="margin-top: 150px; margin-bottom: 150px;" > 
-      <a href="https://rarible.com/poetry_ai_art" target="_blank"  >
-        <img src="images/web_banner_big.jpg" style="max-width: 100%;height: auto;" >
-      </a>
-  </div>
-
-  <hr id="experimentation" style="opacity: 0%;" >
+  
 
     <!-- !PAGE CONTENT! -->
-
-  <div class="w3-main w3-content w3-padding" style="max-width:1200px;color: #000;">
+    <div id="experimentation" class="w3-main w3-content w3-margin-16" style="max-width:1200px;height:1200px; color: #000;">
 
     <!-- First Photo Grid-->
     <h1  style="text-align: center; "> ( meta ) VERSES</h1>
@@ -151,77 +127,36 @@
       </div>
     </div>
   
+    <!-- AI Section -->
+    <div  style="margin-top: 100px;" > 
+      <object width="100%" height="700px" class="inner"  type="text/javascript" data="vis4.html?poem=metareality.en" ></object>
 
-  
-  <!-- NFTs Section -->
-  <!-- <div class="w3-row  w3-center nftsborder"> 
-    <div class="w3-half "><img src="images/NFTs.jpeg" class="nfts nftsimage" style="max-width:450px" ></div>
-    <div class="w3-half ">
-      <iframe src="https://cdn.forms-content.sg-form.com/a8ecc6a8-845b-11ec-a482-e23143a44877" class="nfts" width="100%" height="500px" ></iframe>
-    </div>
-  </div> -->
-
-
-  <!-- AI Section
-  <div id="AI" class="digitaltwinZone" style="margin-top: 100px;">
-
-    <img src= "images/background_color.jpg" class="digitaltwinback">
-
-    <div class="digitaltwin  w3-container  w3-center" id="AI">  
-      <h3>Interact with the AI</h3><br>
-      <p>Write a title and the digital twin poet will generate a poem.</p>
-
-      <span id="spinner" class="spinner">  </span>
-      <div class="w3-center w3-margin-bottom">
-        <input id="poeminput" type="text" size="40" style=" height:32px; text-align: center;" onkeydown="generate(this)"><br> <br> 
-      </div>
-      <button onclick="generatePoem()">Generate Poem</button>
-
-      <div id="loading" class="w3-container w3-center w3-center loader">
-        loading AI
-        <div class="w3-border w3-center">
-          <div id="loadingbar" class="w3-grey " style="height:24px;width:0%"> </div>
-        </div>
-      </div>
-
-      <div class=" w3-row-padding w3-padding-16 w3-center" >
-        <pre id="poemoutput" class="digitaltwinpoem" ></pre><br><br>
-      </div>
-        
-    </div>
-  </div> -->
-  
-  <!-- AI Section -->
-  <!-- <div id="vanta_efect"  style="height: 1000px; " > -->
-  <div  style="margin-top: 100px;" > 
-    <object width="100%" height="700px" class="inner"  type="text/javascript" data="vis4.html?poem=metareality.en" ></object>
-
-    <div class="digitaltwinZone" >  
-      <div class="digitaltwin w3-container  w3-center w3-padding-32" id="AI" >  
-        
-        <h3 style="color: #fff;margin-top: 100px;">Interact with the AI</h3><br>
-        
-        <div class="w3-center w3-margin-bottom">
-          <input id="poeminput" class=" w3-round-large" type="text" size="40" style=" height:32px; text-align: center;" onkeydown="generate(this)" placeholder="write a sentence here"><br> <br> 
-        </div>
+      <div class="digitaltwinZone" >  
+        <div class="digitaltwin w3-container  w3-center w3-padding-32" id="AI" >  
           
-        <span id="spinner" class="spinner"></span>
-        <button class=" btn  btn1 " onclick="generatePoem()">Generate poem</button>
-        
-        <div id="loading" class="w3-container w3-center w3-center loader">
+          <h3 style="color: #fff;margin-top: 100px;">Interact with the AI</h3><br>
           
-          <div class="w3-border w3-center">
-            <div id="loadingbar" class="w3-grey " style="height:24px;width:0%"> </div>
+          <div class="w3-center w3-margin-bottom">
+            <input id="poeminput" class=" w3-round-large" type="text" size="40" style=" height:32px; text-align: center;" onkeydown="generate(this)" placeholder="write a sentence here"><br> <br> 
           </div>
-        </div>
-        
-        <div class="w3-row-padding w3-padding-16 w3-center" >
-          
-          <pre id="poemoutput"  class="digitaltwinpoem" ></pre><br><br>
-        </div>
             
+          <span id="spinner" class="spinner"></span>
+          <button class=" btn  btn1 " onclick="generatePoem()">Generate poem</button>
+          
+          <div id="loading" class="w3-container w3-center w3-center loader">
+            
+            <div class="w3-border w3-center">
+              <div id="loadingbar" class="w3-grey " style="height:24px;width:0%"> </div>
+            </div>
+          </div>
+          
+          <div class="w3-row-padding w3-padding-16 w3-center" >
+            
+            <pre id="poemoutput"  class="digitaltwinpoem" ></pre><br><br>
+          </div>
+              
+        </div>
       </div>
-    </div>
     </div>
     <!-- About Section -->
     <div  id="about" class="w3-container w3-padding-32 w3-center"  style="color: #000; margin-top: 200px;">  
@@ -257,9 +192,68 @@
         <p class="w3-opacity">AI Advisor</p>
         <p>Distinguished Engineer at IBM.</p>
       </div>
-
     </div>
 
+
+  <div class="w3-container w3-padding-32" style="margin-top: 100px;">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
+  </div>
+ <!-- events -->
+  <h2 id="events" style="color: #fff;text-align: center;margin-top: 100px; margin-bottom: 100px;">Events</h2>
+
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-card-4 w3-center " style="max-width:250px;   ">
+          <div class="w3-container w3-center w3-blue">
+            <p>Mexico / Apr 5th-10th , 2022</p>
+          </div>
+          <a href="https://www.timeoutmexico.mx/ciudad-de-mexico/arte/bienal-latinoamericana-de-inteligencia-artificial?fbclid=IwAR2xMXwKINp9K5SwWkp0R-S6zr65cwH8Ww4yd3rumK62xXzbBUEvW9qj1Tc" target="_blank">
+            <img src="events/2022_apr/Bilia_mexico.jpg" alt="Mexico" style="width:100%">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-card-4  w3-center " style="max-width:250px; ">
+          <div class="w3-container w3-center w3-blue" >
+            <p>Mexico city / Feb 4th-5th, 2022</p>
+          </div>
+          <a href="https://youtu.be/-QeIyqBvvqs" target="_blank">
+            <img src="events/2022_feb/KM 2022 cartelsabado1.jpg" alt="Mexico" style="width:100%">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-card-4 w3-center " style="max-width:250px;   ">
+          <div class="w3-container w3-center w3-blue">
+            <p>Manhattan / Nov 20th, 2021</p>
+          </div>
+          <a href="https://youtu.be/m8NleslgeAk" target="_blank">
+            <img src="events/2021_nov/TheMyntGalleryFlyer_smallSize.jpg" alt="Manhattan" style="width:100%">
+          </a>
+          </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-card-4  w3-center " style="max-width:250px; ">
+          <div class="w3-container w3-center w3-blue" >
+            <p>Vigo / Oct 13th, 2021</p>
+          </div>
+          <a href="https://youtu.be/0dQyMTqAj5A" target="_blank">
+            <img src="events/2021_oct/Vigo_poetaVsLaMaquina.jpg" alt="Vigo" style="width:100%">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container w3-padding-32" style="margin-top: 100px;">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
   </div>
 
       <!-- Footer -->
@@ -270,72 +264,20 @@
       <a href="https://www.instagram.com/marcos_delafuente/" target="_blank"><i class="fa fa-instagram w3-hover-opacity " style="font-size: 50px;"></i></a>
       <a href="https://www.youtube.com/user/Waskoi" target="_blank"><i class="fa fa-youtube w3-hover-opacity" style="font-size: 50px;"></i></a>
     </div>
-
-    <h2 id="events"> Events</h2>
-
-
-  <div class=" w3-container" style="max-width: 1200px; margin:auto">
-      <div class="  w3-card-4 w3-center" style="max-width:300px;  margin:auto">
-        <div class="w3-container w3-center w3-blue">
-          <p>Mexico citi / Feb 4th-5th, 2022</p>
-        </div>
-        <a href="https://youtu.be/-QeIyqBvvqs" target="_blank">
-          <img src="events/2022_feb/KM 2022 cartelsabado.jpg" alt="Alps" style="width:100%">
-        </a>
-      </div>
-  </div>
-    
-    <div class=" w3-container" style="max-width: 650px; margin:auto">
-      <div class="eventgrid"  >
-        <div class="w3-card-4 w3-center " style="max-width:300px;   ">
-          <div class="w3-container w3-center w3-blue">
-            <p>Manhattan / Nov 20th, 2021</p>
-          </div>
-          <a href="https://youtu.be/m8NleslgeAk" target="_blank">
-            <img src="events/2021_nov/TheMyntGalleryFlyer_smallSize.jpg" alt="Manhattan" style="width:100%">
-          </a>
-          </div>
-        </div>
-
-        <div class="eventgrid">
-        <div class="w3-card-4  w3-center " style="max-width:300px; ">
-          <div class="w3-container w3-center w3-blue" >
-            <p>Vigo / Oct 13th, 2021</p>
-          </div>
-          <a href="https://youtu.be/0dQyMTqAj5A" target="_blank">
-            <img src="events/2021_oct/Vigo_poetaVsLaMaquina.jpg" alt="Vigo" style="width:100%">
-          </a>
-        </div>
-      </div>
-    </div>
-
   </footer>
 
-  <script>
-    VANTA.NET({
-      el: "#vanta_efect",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0x603fff,
-      // showDots: false
-    })
-    </script>
+</div><!-- end PAGE CONTENT -->
 
-    <script>
-      // Script to open and close sidebar
-      function w3_open() {
-        document.getElementById("mySidebar").style.display = "block";
-      }
-        
-      function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
-      }
-    </script>
+<script>
+  // Script to open and close sidebar
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+  }
+    
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+  }
+</script>
 
 
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>

@@ -88,8 +88,9 @@ background-size: cover;
 
 /* First image (Logo. Full height) */
 .bgimg-1 {
-background-image: url('images/background_color.jpg');
-min-height: 850px;
+/* background-image: url('images/background_color.jpg'); */
+background-image: var(--black);
+min-height: 300px;
 opacity: 100%;
 }
 
@@ -255,8 +256,8 @@ button {
 .eventgrid {
   float:left;
   padding: 32px;
-  width: 300px;
-  
+  width: 285px;
+  margin-bottom: 150px;
 }
 
 .nfts{
