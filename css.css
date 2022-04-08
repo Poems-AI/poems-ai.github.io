@@ -76,7 +76,7 @@
 body {padding: 0px;
     margin:0px;
     color: #fff;
-    background-color:#fff;} 
+    background-color:rgb(0, 0, 0);} 
 
 /* Create a Parallax Effect */
 .bgimg-1{
@@ -89,7 +89,7 @@ background-size: cover;
 /* First image (Logo. Full height) */
 .bgimg-1 {
 /* background-image: url('images/background_color.jpg'); */
-background-image: var(--black);
+background: black;
 min-height: 250px;
 opacity: 100%;
 }
@@ -143,6 +143,11 @@ button {
   width: 230px;
 }
 
+.events{
+  float:left;
+  padding: 32px;
+  width: 25%;
+}
 
 .date {
   text-transform: uppercase;
@@ -298,6 +303,10 @@ button {
     border: none;
   }
   
+  .events{
+    width:100%;
+    float:none;
+  }
 }
 
 .inner {
