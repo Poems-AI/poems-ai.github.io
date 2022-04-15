@@ -20,6 +20,7 @@ function generateMap(words){
 
 function setup() {
   poemGenerate=poemGenerate[poemGenerate.length-1]
+  print 
   poemWords = poemGenerate.split(" ")
 
   generateMap(poemWords)

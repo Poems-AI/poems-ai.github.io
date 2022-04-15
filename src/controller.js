@@ -4,7 +4,7 @@ function keyTyped() {
         console.log(key)
         switch(key) {
         case "1":
-            window.location.href="vis2.html?poem=inimitables.es"
+            window.location.href="vis2.html?poem=metareality.es"
             break;
         case "2":
             window.location.href="vis1.html?poem=picasso_in_botswana.es"
@@ -13,7 +13,7 @@ function keyTyped() {
             window.location.href="vis3.html?poem=new_worlds.es"
             break;
         case "4":
-            window.location.href="vis4.html?poem=metareality.es"
+            window.location.href="vis4.html?poem=inimitables.es"
             break;
         case "5":
             window.location.href="vis5.html?poem=burn_after_selling.es"
@@ -45,7 +45,7 @@ function keyTyped() {
         console.log(key)
         switch(key) {
         case "1":
-            window.location.href="vis2.html?poem=inimitables.en"
+            window.location.href="vis2.html?poem=metareality.en"
             break;
         case "2":
             window.location.href="vis1.html?poem=picasso_in_botswana.en"
@@ -54,7 +54,7 @@ function keyTyped() {
             window.location.href="vis3.html?poem=new_worlds.en"
             break;
         case "4":
-            window.location.href="vis4.html?poem=metareality.en"
+            window.location.href="vis4.html?poem=inimitables.en"
             break;
         case "5":
             window.location.href="vis5.html?poem=burn_after_selling.en"
