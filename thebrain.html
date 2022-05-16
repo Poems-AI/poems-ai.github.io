@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="css_metaverse.css">
+    <link rel="stylesheet" href="nft.css">
+    <link rel="stylesheet" href="css_thebrain.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+   <style>
+        /* body,h1,h2,h3,h4,h5,h6,p {font-family: circular, 'segoe ui', sans-serif; color: white; } */
+    </style>
+</head>
+<body>
+
+    <a href="index.new.html"><div class="arrow"> &larr;</div></a>
+   
+    <div class="header">
+        <img src="images/section_logo/Poetry+AI blanco-24-TheBrainGallery.png" alt="logo NFTs collection" class="logo_head">
+        <p>Inspired The Brain gallery is an experimentation section. 
+            Like root of the project an Artificial inteligent has been trained with poems of 
+            Marcos de la fuente in the idea to create a digital Twin. So, text generation tool 
+            takes text you provide and generates what it thinks comes next, using a state-of-the-art 
+            neural network and adjusting to the writting style of poet. </p>
+    </div>
+    
+
+    <div class="background_gradient "  >  
+        <div class="digitaltwin w3-container  w3-center w3-padding-32" id="AI" >  
+            
+            <h3 style="color: #fff;margin-top: 100px">Interact with the AI</h3><br>
+            
+            <div class="w3-center w3-margin-bottom">
+            <input id="poeminput" class=" w3-round-large" type="text" size="40" style=" height:32px; text-align: center;" onkeydown="generate(this)" placeholder="write a sentence here"><br> <br> 
+            </div>
+            
+            <span id="spinner" class="spinner"></span>
+            <button class=" button-50 " onclick="generatePoem()">Generate poem</button>
+            
+            <div id="loading" class="w3-container w3-center w3-center loader">
+            
+            <div class="w3-border w3-center">
+                <div id="loadingbar" class="w3-grey " style="height:24px;width:0%"> </div>
+            </div>
+            </div>
+            
+            <div class="w3-row-padding w3-padding-16 w3-center" >
+                <pre id="poemoutput"  class="digitaltwinpoem " ></pre><br><br>
+
+            <!-- <pre id="poemoutput"  class=" blurred-box" ></pre><br><br> -->
+            </div>
+                
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+<div id="media" class=" w3-row w3-padding-64 " style="background-color: aquamarine; margin-top: 200px;">
+    <div class="w3-half w3-container w3-margin-bottom w3-center socialMediaLinks">
+      <a href="https://twitter.com/artpoet2" class="fa fa-twitter " target="_blank"> </a>
+      <a href="https://www.facebook.com/marcosmaniquies" class="fa fa-facebook-official" target="_blank"></a>
+      <a href="https://www.instagram.com/marcos_delafuente/" class="fa fa-instagram" target="_blank"></a>
+      <a href="https://www.youtube.com/user/Waskoi" class="fa fa-youtube" target="_blank"></a>
+      <a href="https://github.com/Poems-AI" class="fa fa-github" target="_blank"></a>
+    </div>
+    <div id="contact" class="w3-half w3-container ">
+      <iframe src="https://cdn.forms-content.sg-form.com/a8ecc6a8-845b-11ec-a482-e23143a44877" class="screen-body" ></iframe>
+    </div>
+</div>
+  
+  <footer class="w3-container w3-center w3-padding-64" >
+    <span>&#169;</span> Poetry+AI=ART 2022, All Rights Reserved
+  </footer>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="src/interact.js"></script>
+
+</body>
+</html>

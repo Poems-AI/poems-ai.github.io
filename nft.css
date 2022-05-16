@@ -1,0 +1,132 @@
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    color: #fff;
+    background-color: #000;
+}
+
+.nft_editions{
+    max-width: 1200px; 
+    margin: auto;
+    display: flex;
+    margin-top: 100px;
+    /* background-image: url("images/NFTs/Metareality_1.png"); */
+}
+
+.nft_editions img{
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    border-radius: 20px;
+}
+
+  /* opasities boxes at collections images*/
+svg {
+   box-sizing: border-box;
+    width: 400px;
+    height: 390px;
+    padding: 16px;
+    z-index: 2;
+    position: absolute;
+
+  }
+  svg text {
+    text-anchor: middle;
+  }
+  svg #overlay {
+    fill: white;
+    opacity: 0.9;
+  }
+  svg #title {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  svg #text {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  svg #r {
+    fill: white;
+    mask: url(#mask);
+  }
+
+
+
+.explorer{
+  max-width: 1200px;
+  margin: auto;
+  padding: 32px;
+  
+}
+
+
+.button-52 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid rgb(100, 167, 155); 
+  
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-52:after {
+  content: "";
+  background-color: rgb(201,88,99);
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.button-52:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+@media (min-width: 768px) {
+  .button-52 {
+    padding: 13px 50px 13px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  svg{
+    visibility: hidden;;
+  }
+
+ 
+
+  svg #text{
+    visibility: hidden;
+  }
+
+  .nft_editions img{
+    left: auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .nft_editions{
+    margin-top: 50px;
+  }
+}
