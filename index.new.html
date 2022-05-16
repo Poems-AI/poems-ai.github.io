@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      body,h1,h2,h3,h4,h5,h6,p {font-family: circular, 'segoe ui', sans-serif; color: white; font-size: 18px;}
+  
+   </style>
+</head>
+<body>
+
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-right w3-white " style="display:none;z-index:2;width:15%;min-width:300px;color: #fff;right:0;" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button" style="text-align: right;" >X</a>
+    <a href="#projects" onclick="w3_close()" class="w3-bar-item w3-button">Projects</a>
+    <a href="#Events" onclick="w3_close()" class="w3-bar-item w3-button">Events</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a>
+    <!-- <a href="#media" onclick="w3_close()" class="w3-bar-item w3-button">Media</a>
+    <a href="#events" onclick="w3_close()" class="w3-bar-item w3-button">Eventos</a> -->
+    <a href="prensa.html" onclick="w3_close()" class="w3-bar-item w3-button" target="_blank">Press</a>
+</nav>
+
+<!-- Top menu -->
+<div class=" w3-container " style="background: rgb(151, 150, 150); ">
+    <img src="images/Poetry+AI color-25.png" alt="Logo Poetry+AI=Art" width="15%" height="auto">
+    <div class=" w3-top w3-right-align right_menu"  onclick="w3_open()" >☰</div>
+</div>
+
+<!-- Header image background -->
+<div class="header_bg"></div>
+
+
+<!-- proyects -->
+<h1 class="secTitle" >Projects</h1>
+<div id="projects">
+  
+  <div id="Metaverse"  class="w3-container w3-padding w3-center project_maquet" >
+    <a href="metaverse_shows.html" target="_blank">
+      <div class="w3-half w3-margin-bottom pagesnumber">
+        01
+      </div>
+      <div class="w3-half w3-margin-bottom w3-left-align  ">
+        <img src="images/section_logo/MetaverseShows_blanco_.png" alt="" class="visible_img"  >
+        <img src="images/section_logo/Metaverso_blanco+tricolor_.png" alt="" class="hidden_img"  > 
+        <p class="p_project">Poems collection by Marcos de la Fuente, combined with visualizations created by AI and music.</p>
+      </div>
+    </a>
+  </div>
+
+  <div id="NFTs"  class="w3-container w3-padding w3-center project_maquet"  >
+    <a href="NFTs_collection.html" target="_blank">
+      <div class="w3-half w3-margin-bottom pagesnumber">
+        02
+      </div>
+      <div class="w3-half w3-margin-bottom w3-left-align">
+        <img src="images/section_logo/NFTsCollection_blanco.png" alt="" class="visible_img" >
+        <img src="images/section_logo/NFTsCollection_blanco+tricolor.png" alt="" class="hidden_img" >
+        <p class="p_project">Collections NFTs, images and videos generated from the poems.</p>
+      </div>
+    </a>
+  </div>
+
+  <div id="TheBrain"  class="w3-container w3-padding w3-center project_maquet"  >
+    <a href="thebrain.html" target="_blank">
+      <div class="w3-half w3-margin-bottom pagesnumber">
+        03
+      </div>
+      <div class="w3-half w3-margin-bottom w3-left-align">
+        <img src="images/section_logo/TheBrainGallery_blanco.png" alt="" class="visible_img">
+        <img src="images/section_logo/TheBrainGallery_blanco+tricolor.png" alt="" class="hidden_img" >
+        <p class="p_project"> Interactive proposal with artificial intelligence, create your own poems.</p>
+      </div>
+    </a>
+  </div>
+
+  <div id="DigitalPoet"  class="w3-container w3-padding  w3-center project_maquet"  >
+    <a href="https://hubs.mozilla.com/qNdc6N4/art-poet-stunning-meetup" target="_blank">
+      <div class="w3-half w3-margin-bottom pagesnumber"> 
+        04
+      </div>
+      <div class="w3-half w3-margin-bottom w3-left-align">
+        <img src="images/section_logo/DigitalPoet_blanco.png" alt="" class="visible_img">
+        <img src="images/section_logo/DigitalPoet_blanco+tricolor.png" alt="" class="hidden_img" >
+        <p class="p_project">Digital Twin, the poet's avatar in his own metaverse.</p>
+      </div>
+    </a>
+  </div>
+</div>  
+
+<!-- Events -->
+<h1 id="Events" class="secTitle" >Events</h1>
+<div class="w3-row w3-padding-32" >
+  
+    <div class="w3-third w3-container w3-padding-16 " >
+        <div class="eventsContent">
+          <div class="w3-half w3-container">
+          <img src="events/kerouacNY.jpg" alt="Keruoac Festival 2022, NYC" class="eventsLogo">
+          </div>
+          <div class="w3-half w3-container w3-center ">
+            <a href="https://fb.watch/cNbnq3U-Rg/" target="_blank"><p>Bowery Poetry. Apr 27, 22.</p></a>
+            <a href="https://fb.watch/cNblMWSb5z/" target="_blank"><p>Cervantes Institute. Apr 28, 22.</p></a>
+            <a href="https://fb.watch/cNbj6cf0q_/" target="_blank"><p>Howl! Happening. Apr 30, 22.</p></a>
+          </div>
+        </div>
+    </div>
+
+    <div class="w3-third w3-container w3-padding-16  " >
+      <div class="eventsContent">
+        <div class="w3-half w3-container">
+        <img src="events/alegria.jpg" alt="Fiesta Alegria, NYC" class="eventsLogo">
+        </div>
+        <div class="w3-half w3-container w3-padding w3-center">
+          <a href="https://shotgun.live/events/let-s-boogie-in-nyc" target="_blank"><p>Nublu, NYC. Apr 15, 22.</p></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-third w3-container w3-padding-16 " >
+      <div class="eventsContent">
+        <div class="w3-half w3-container">
+        <img src="events/bilia.jpg" alt="Bilia, bienal latinoamericana de inteligencia artificial ,Mexico" class="eventsLogo">
+        </div>
+        <div class="w3-half w3-container w3-padding w3-center">
+          <a href="https://youtu.be/WrE0JOXeLj4" target="_blank"><p>Online, Drop NFT. Apr 08, 22.</p></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="w3-third w3-container w3-padding-16" >
+      <div class="eventsContent">
+        <div class="w3-half w3-container">
+        <img src="events/kerouacMexico.jpg" alt="Keruoac Festival 2022, Mexico" class="eventsLogo">
+        </div>
+        <div class="w3-half w3-container w3-padding w3-center">
+          <a href="https://fb.watch/cNbytuonbV/" target="_blank"><p>Mexico. Feb 04-05, 22.</p></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-third w3-container w3-padding-16 " >
+      <div class="eventsContent">
+        <div class="w3-half w3-container">
+        <img src="events/themynth_v2.jpg" alt="The Mynth Gallery, NYC" class="eventsLogo">
+        </div>
+        <div class="w3-half w3-container w3-padding w3-center">
+          <a href="https://youtu.be/m8NleslgeAk" target="_blank" ><p>The Poet Vs the machine, location The Mynth Gallery, New York city. Nov 20, 21.</p></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-third w3-container w3-padding-16" >
+      <div class="eventsContent">
+        <div class="w3-half w3-container">
+        <img src="events/elPoetaVsLaMaquina.jpg" alt="Vialia, Vigo" class="eventsLogo">
+        </div>
+        <div class="w3-half w3-container w3-padding w3-center">
+          <a href="https://youtu.be/0dQyMTqAj5A" target="_blank"><p>El Poeta Vs la maquina, Vigo. Oct 13, 21.</p></a>
+        </div>
+      </div>
+    </div>
+ 
+</div>
+
+
+    
+<!-- Footer -->
+<div id="media" class=" w3-row w3-padding-64 " style="background-color: aquamarine; margin-top: 300px;">
+ 
+  <div class="w3-half w3-container w3-margin-bottom w3-center socialMediaLinks">
+    <a href="https://twitter.com/artpoet2" class="fa fa-twitter " target="_blank"> </a>
+    <a href="https://www.facebook.com/marcosmaniquies" class="fa fa-facebook-official" target="_blank"></a>
+    <a href="https://www.instagram.com/marcos_delafuente/" class="fa fa-instagram" target="_blank"></a>
+    <a href="https://www.youtube.com/user/Waskoi" class="fa fa-youtube" target="_blank"></a>
+    <a href="https://github.com/Poems-AI" class="fa fa-github" target="_blank"></a>
+  </div>
+
+  <div id="contact" class="w3-half w3-container ">
+
+    <iframe src="https://cdn.forms-content.sg-form.com/a8ecc6a8-845b-11ec-a482-e23143a44877" class="screen-body"  ></iframe> <!-- scrolling="no" -->
+
+  </div>
+</div>
+
+<footer class="w3-container w3-center w3-padding-64" >
+  <span>&#169;</span> Poetry+AI=ART 2022, All Rights Reserved
+</footer>
+
+<script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
+      
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+
+</script>
+
+</body>
+
+</html>
