@@ -412,10 +412,27 @@ button {
   height: 500px;
   border:none;
 }
-/* end icons */
 
+
+/* end icons */
+.headerLogo{
+  width:15% ;
+  height:auto;
+}
 
 @media screen and (max-width: 600px) {
+  .headerLogo {
+    width:30%;
+    /* float:none; */
+  }
+
+  .right_menu{
+    position: absolute;
+    right: 10px;
+    padding: 0px;
+    font-size: 20px;
+  }
+ 
   .digitaltwinpoem{
     width:100%;
     float:none;
@@ -451,13 +468,11 @@ button {
   .secTitle{
     font-size:50px;
   }
-  
-  .right_menu{
-    position: absolute;
-    right: 20px;
-    padding: 0px;
-    font-size: 20px;
+
+  .header_bg{
+    background-attachment: scroll;
   }
+ 
 }
 
 .inner {
