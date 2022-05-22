@@ -428,9 +428,10 @@ button {
 
   .right_menu{
     position: absolute;
-    right: 10px;
-    padding: 0px;
-    font-size: 20px;
+    right: -8px;
+    /* padding: 0px; */
+    top: -24px;
+    font-size: 48px;
   }
  
   .digitaltwinpoem{
@@ -471,7 +472,9 @@ button {
   }
 
   .header_bg{
+    margin-left: -100px;
     background-attachment: scroll;
+    height: 500px; 
   }
  
 }
