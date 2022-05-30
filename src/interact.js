@@ -19,27 +19,19 @@ let loadingElement = document.getElementById("loading")
 let loadingbarElement = document.getElementById("loadingbar")
 
 function cleanPoem(poem){
-    console.log(poem)
-    // poem = poem.replace("PA:","").replace("RE:","").replace("pa:","").replace("re:","").replace("#","").replace("\n\n","\n").replace(",",",\n").replace(".",".\n").replace("\\","\n")
-    // poem = poem.replace("re:","").replace("\N","\n").replace("\\n","\n").replace(",","\n").replace(".","\n")
-    // poem = poem.replace("\\","\n").replace('\"','\n').replace(' \'','\n')
-
-   
+    poem = poem.replace(/(?:\r\\n|\r|\\n)/g, '\n')
     poem = poem.replace("re:","")
-    poem = poem.replace("\N","\n")
     poem = poem.replace("\\n","\n")
+    poem = poem.replace("\N","\n")
     poem = poem.replace(",","\n")
     poem = poem.replace(".","\n")
     poem = poem.replace(";","\n")
     poem = poem.replace("\\","\n")
     poem = poem.replace(/\\\//g, '\n')
-    // poem = poem.replace( \,'\n')
     poem = poem.split(",").join(",\n")
     poem = poem.split(".").join(".\n")
-    poem = poem.split("\/").join("\n")
     poem = poem.replace(/\\\//g, '\n')
     poem = poem.replace(/\\/g, '\n')
-    // console.log("---",poem)
     lines = poem.split("\n").slice(0, 10).join("\n")
     return lines
 }
