@@ -41,9 +41,14 @@
     left: 0px;
 }
 
+.poetdigitalBrain {
+    width: 80%;
+}
+
 @media (min-width: 768px) {
     .button-50 {
         padding: 13px 50px 13px;
     }
 }
+
 
