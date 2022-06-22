@@ -436,6 +436,7 @@ button {
 }
 
 .card_callaction img {
+  width:100%;
   border-radius: 5px 5px 0 0;
 }
 
@@ -443,6 +444,10 @@ button {
   display: flex;
   justify-content: center;
   padding: 2px 16px;
+}
+
+.container_callaction img{
+  width:75%;
 }
 
 .callaction{
@@ -504,17 +509,11 @@ button {
   }
 
   .header_bg{
-    margin-left: -100px;
-    background-attachment: scroll;
-    height: 500px; 
+    /* margin-left: -100px; */
+    /* background-attachment: scroll; */
+    /* height: 300px;  */
   }
 
-  .callaction{
-    background: rgba(225, 225, 225, .8) ; 
-    width:100%;
-    float:none;
-  }
- 
 }
 
 .inner {
