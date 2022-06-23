@@ -428,7 +428,7 @@ button {
   transition: 0.3s;
   width: 100%;
   border-radius: 5px;
-  margin-top: 15px;
+  margin-top: 60px;
 }
 
 .card_callaction:hover {
@@ -506,12 +506,6 @@ button {
   .secTitle{
     font-size:50px;
     margin-top: 50px;
-  }
-
-  .header_bg{
-    /* margin-left: -100px; */
-    /* background-attachment: scroll; */
-    /* height: 300px;  */
   }
 
 }
