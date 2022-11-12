@@ -10,13 +10,23 @@
 
         #playbutton {
           z-index: 10000000;
+       
           position: absolute;
-          top:40%;
-          left: 20%;
+          top:25%;
+          left: 25%; 
+          width: 50%; 
+
           background-color: white;
-          width: 50%;
           border-color: black;
+
+          /* display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          min-height: 100vh; */
+
         }
+
         .logo {
           width: 100%;
         }
@@ -78,7 +88,9 @@
 
 
     var sound = new Howl({
-      src: ['Marcos_Vialia_recorte.mp3']
+      src: ['Marcos_Vialia_recorte.mp3'],
+      loop: true,
+      volume: 1,
     });
 
     function play(){
@@ -86,7 +98,6 @@
       playButton.style.visibility = "hidden";
       ARApp.style.visibility='visible';
       overlay.style.zIndex = "10";
-
     }
     
     </script>
