@@ -16,13 +16,14 @@
     }
     
     #myVideo {
-      position: absolute;
+      position: static;
       /* padding-top: 10%; */
       padding-bottom: 10px;
       /* right: 0; */
       /* top: 0; */
-      min-width: 100%; 
-      min-height: 90%;
+      max-width: 100%;
+      /* min-width: 100%; 
+      min-height: 90%; */
     }
     
     .content {
@@ -57,15 +58,16 @@
             padding-bottom: 10%; */
             /* right: 0; */
             /* top: 0; */
-            /* max-width: 90%; 
-            max-height: 90%; */
+            max-width: 90%; 
+            max-height: 90%;
         }
     }
     </style>
     </head>
 <body>
 
-    <video autoplay  loop id="myVideo" width="1080" height="1080">
+    <video autoplay  loop id="myVideo" > 
+      <!-- width="1080" height="1080" -->
         <source src="Exponencialidades_265_22.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
       </video>
