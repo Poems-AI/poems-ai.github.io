@@ -53,7 +53,7 @@ function keyTyped() {
             // window.location.href="vis2.html?poem=metareality.en"
             break;
         case "2":
-            window.location.href="vis2.html?poem=in_the_clouds.en"
+            window.location.href="vis2.html?poem=Excessive_exponentialities_in_a_finite_world.en"
 
             // window.location.href="vis1.html?poem=picasso_in_botswana.en"
             break;
