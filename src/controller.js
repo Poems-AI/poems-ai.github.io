@@ -47,18 +47,19 @@ function keyTyped() {
         console.log(key)
         switch(key) {
         case "1":
-            window.location.href="shot4.html?lang=.en"
-
+            window.location.href="vis1.html?poem=picasso_in_botswana.en"
+            //window.location.href="shot4.html?lang=.en"
             // window.location.href="video2_metareality.html"
             // window.location.href="vis2.html?poem=metareality.en"
             break;
         case "2":
-            window.location.href="vis2.html?poem=Excessive_exponentialities_in_a_finite_world.en"
-
+            window.location.href="video2_metareality.html"
+            //window.location.href="vis2.html?poem=Excessive_exponentialities_in_a_finite_world.en"
             // window.location.href="vis1.html?poem=picasso_in_botswana.en"
             break;
         case "3":
-            window.location.href="vis1.html?poem=picasso_in_botswana.en"
+            window.location.href="vis4.html?poem=inimitables.en"
+            //window.location.href="vis1.html?poem=picasso_in_botswana.en"
             // window.location.href="video3_newWorlds.html"
             // window.location.href="vis3.html?poem=new_worlds.en"
             break;
@@ -67,11 +68,12 @@ function keyTyped() {
             // window.location.href="vis4.html?poem=inimitables.en"
             break;
         case "5":
-            window.location.href="shot5.html?lang=.en"
+            window.location.href="video4_lamaquina.html"
             // window.location.href="vis5.html?poem=burn_after_selling.en"
             break;
         case "6":
-            window.location.href="video2_metareality.html"
+            window.location.href="vis2.html?poem=Excessive_exponentialities_in_a_finite_world.en"
+            //window.location.href="video2_metareality.html"
             // window.location.href="shot1.html?lang=.en"
             break;
         case "7":
