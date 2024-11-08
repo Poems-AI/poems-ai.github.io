@@ -30,7 +30,7 @@ function keyTyped() {
             window.location.href="shot3.html?lang=.es"
             break;
         case "9":
-            window.location.href="video1_losdigitos.html"
+            window.location.href="shot4.html?lang=.es"
             break;
         case "0":
             window.location.href="shot5.html?lang=.es"
