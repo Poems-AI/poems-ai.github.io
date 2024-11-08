@@ -88,7 +88,7 @@ function keyTyped() {
             window.location.href="video1_losdigitos.html"
             break;
         case "0":
-            window.location.href="vis8.html"
+            window.location.href="vis8.html?lang=.en"
             // window.location.href="shot5.html?lang=.en"
             break;
         case "q":
