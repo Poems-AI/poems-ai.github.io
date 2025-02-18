@@ -77,7 +77,7 @@ function keyTyped() {
             // window.location.href="shot1.html?lang=.en"
             break;
         case "7":
-            window.location.href="vis5.html?poem=burn_after_selling.en"
+            window.location.href="video1_losdigitos.html"
             // window.location.href="shot2.html?lang=.en"
             break;
         case "8":
