@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <style>
+
+        #playbutton {
+          z-index: 10000000;
+       
+          position: absolute;
+          top:35%;
+          left: 25%; 
+          width: 50%; 
+
+          background-color: white;
+          border-color: black;
+
+          /* display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          min-height: 100vh; */
+
+        }
+
+        .logo {
+          width: 100%;
+        }
+        .mindar-ui-overlay{
+          z-index: -10;
+        }
+      
+        #arapp {
+          visibility: hidden;
+         
+        }
+ 
+        .buttontext{
+        
+          font-size:x-large;
+          font-weight: 600;
+          color:black;
+          
+        }
+    </style>
+
+  </head>
+  <body>
+    <button id="playbutton" onclick="play()">
+      <img class="logo" src="images/logo_ar.png" alt="">
+      <div class="buttontext">
+        <br>
+        experiment #1
+        <br> <br>
+        click to start
+        <br> <br>
+      </div>
+
+     </button>
+
+    <div id="arapp"> 
+      <a-scene mindar-image="imageTargetSrc: card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+          <img id="card" src="card.jpg" />
+          <a-asset-item id="avatarModel" src="poet.glb"></a-asset-item>
+        </a-assets>
+  
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        
+   
+  
+       <a-entity  mindar-image-target="targetIndex: 0"> 
+          <a-plane src="#card" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+          <a-gltf-model rotation="90 0 0 " position="-0.2 0 0" scale="0.05 0.05 0.05" src="#avatarModel"  animation-mixer >
+        </a-entity>
+      </a-scene> 
+          <!-- <a-sound src="src: url(Marcos_Vialia_recorte.mp3)" autoplay="true" position="0 0 0"></a-sound> --> 
+    </div>
+  
+
+    <script>
+    var playButton = document.getElementById("playbutton");
+    var ARApp = document.getElementById("arapp");
+    var overlay = document.getElementsByClassName("mindar-ui-overlay");
+
+    var sound = new Howl({
+      src: ['Marcos_Vialia_recorte.mp3'],
+      loop: true,
+      volume: 1,
+    });
+
+    function play(){
+      sound.play();
+      playButton.style.visibility = "hidden";
+      ARApp.style.visibility='visible';
+      overlay.style.zIndex = "10";
+    }
+    
+    </script>
+  </body>
+</html>
