@@ -4,42 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="css.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Quemar después de vender</title>
-    <meta http-equiv = "refresh" content = " 0.1 ; url = QuemarDespuesDeVender.mp4"/>
+    <script src="/js/p5.min.js"></script>
+    <script src="/js/p5.sound.min.js"></script>
+    <script src="/js/p5.speech.js"></script>
+    <script src="/js/p5.asciiart.min.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <script src="https://unpkg.com/rita@2.4.211/dist/rita.js"></script>
+    <title>Inimitables
+
+    </title>
+
     <style>
-      .video-container {
-        position: relative;
-        width: 100%;
-        max-width: 1000px; /* Maximum width on large screens */
-        margin: 0 auto; /* Centers the container */
+      body {padding: 0px;
+            margin:0px;
+            background-color:#000;} 
+
+      .widget{
+        color: white;
+        position:fixed ;
+        top: 50px;
+        background-color: rgba(100, 100, 100, 0.8);
+        width: 25%;
+        height: 50%;
+        left: 64px;
+        font-size: 8px;
+        padding: 16px;
       }
+    </style>
+  </head>
+  <body>
+
+
+    <script src="network.js"></script>
+    <!-- <script src="src/controller.js"></script> -->
     
-      .video-container video {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16/9; /* Maintains video proportions */
-      }
-   </style>
 
-</head>
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHWGPQHGLK"></script>
+   <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
 
-<body>
-    
-  <div class="video-container">
-    <video 
-        controls
-        playsinline
-        preload="metadata"
-        controlsList="nodownload"
-    >
-        <source src="QuemarDespuesDeVender.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-  </div>
+     gtag('config', 'G-SHWGPQHGLK');
+   </script>
 
-</body>
+
+  </body>
 </html>

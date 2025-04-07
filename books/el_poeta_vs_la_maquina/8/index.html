@@ -1,54 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="/js/p5.min.js"></script>
-    <script src="/js/p5.sound.min.js"></script>
-    <script src="/js/p5.speech.js"></script>
-    <script src="/js/p5.asciiart.min.js"></script>
-    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
-    <script src="https://unpkg.com/rita@2.4.211/dist/rita.js"></script>
-    <title>Inimitables
-
-    </title>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Life Poem (Responsive)</title>
     <style>
-      body {padding: 0px;
-            margin:0px;
-            background-color:#000;} 
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-      .widget{
-        color: white;
-        position:fixed ;
-        top: 50px;
-        background-color: rgba(100, 100, 100, 0.8);
-        width: 25%;
-        height: 50%;
-        left: 64px;
-        font-size: 8px;
-        padding: 16px;
-      }
+        :root {
+            /* Define base colors */
+            --bg-color: #000;
+            --fg-color: #0f0;
+            --grid-bg: #111;
+            --border-color: #0f0;
+            --cell-empty-bg: #000;
+            --cell-empty-fg: #0f0;
+            --cell-filled-bg: #0f0;
+            --cell-filled-fg: #000;
+        }
+
+        html, body {
+            height: 100%; /* Ensure html and body can take full height */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Press Start 2P', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--bg-color);
+            color: var(--fg-color);
+            padding: 15px;
+            min-height: 100vh; /* Use min-height for flexibility */
+            box-sizing: border-box;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: clamp(14px, 4vw, 18px);
+            margin-bottom: 15px;
+            text-align: center;
+            flex-shrink: 0; /* Prevent title from shrinking */
+        }
+
+        /* Default (Mobile) Grid Container Styling */
+        #grid-container {
+            width: 100%;
+            max-width: 600px; /* Max width on smaller screens */
+            margin: 15px auto;
+            box-sizing: border-box;
+            display: flex; /* Helps center grid if aspect ratio maintained */
+            justify-content: center; /* Center grid horizontally */
+            align-items: center; /* Center grid vertically */
+            flex-shrink: 1; /* Allow shrinking */
+            flex-grow: 0; /* Don't grow by default */
+            /* We set height dynamically or let content define it on mobile */
+        }
+
+        #grid {
+            display: grid;
+            gap: 1px;
+            background-color: var(--grid-bg);
+            padding: 1px;
+            border: 2px solid var(--border-color);
+            box-sizing: border-box;
+             /* Style set by JS: grid-template-columns, aspect-ratio (mobile), width/height (desktop) */
+             max-width: 100%; /* Ensure it doesn't overflow container */
+             max-height: 100%; /* Ensure it doesn't overflow container */
+        }
+
+        .cell {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1 / 1; /* Keep cells square */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(3px, 1.2vw, 8px);
+            text-align: center;
+            word-wrap: break-word;
+            overflow: hidden;
+            padding: 1px;
+            box-sizing: border-box;
+            transition: all 0.3s ease; /* Keep transition */
+            line-height: 1;
+        }
+
+        .cell-empty {
+            background-color: var(--cell-empty-bg);
+            color: var(--cell-empty-fg);
+        }
+
+        .cell-filled {
+            background-color: var(--cell-filled-bg);
+            color: var(--cell-filled-fg);
+        }
+
+        #controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+            flex-shrink: 0; /* Prevent controls from shrinking */
+        }
+
+        button {
+            padding: clamp(8px, 2vw, 12px) clamp(15px, 4vw, 20px);
+            font-size: clamp(12px, 3vw, 16px);
+            cursor: pointer;
+            background-color: var(--bg-color);
+            color: var(--fg-color);
+            border: 2px solid var(--border-color);
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        button:hover {
+            background-color: var(--fg-color);
+            color: var(--bg-color);
+        }
+
+        #poem {
+            font-size: clamp(8px, 2.5vw, 10px);
+            text-align: center;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            max-width: 95%;
+            box-sizing: border-box;
+            flex-shrink: 0; /* Prevent poem from shrinking */
+        }
+
+        /* --- Desktop Styles --- */
+        @media (min-width: 768px) { /* Apply styles for screens 768px and wider */
+            body {
+                 /* Ensure body fills height to allow grid container to grow */
+                 min-height: 100vh;
+                 display: flex;
+                 flex-direction: column;
+            }
+
+            h1 {
+                font-size: clamp(18px, 2.5vw, 24px); /* Slightly larger title */
+            }
+
+            #grid-container {
+                flex-grow: 1; /* Allow container to take available vertical space */
+                flex-shrink: 1; /* Allow shrinking if needed */
+                width: 100%;  /* Take full width */
+                max-width: none; /* Remove max-width limit */
+                height: 0; /* Base height for flex grow, works with min-height */
+                min-height: 300px; /* Ensure a minimum height */
+                margin: 15px 0; /* Adjust margin */
+                /* display:flex already set */
+            }
+
+            #grid {
+                /* Make grid fill the container */
+                width: 100%;
+                height: 100%;
+                /* aspect-ratio: unset; Remove fixed aspect ratio */
+                /* grid-template-columns set by JS */
+            }
+
+             .cell {
+                /* Adjust cell font if needed on large grids, maybe make max size smaller */
+                 font-size: clamp(3px, 1vw, 7px);
+                 aspect-ratio: unset; /* Let grid define cell shape based on container */
+            }
+
+            #poem {
+                 font-size: clamp(10px, 1.5vw, 12px); /* Slightly larger poem */
+            }
+        }
+
     </style>
-  </head>
-  <body>
+</head>
+<body>
+    <h1>Game of Life Poem evolution</h1>
+
+    <div id="grid-container">
+        <div id="grid"></div>
+    </div>
+
+    <div id="controls">
+        <button id="startStop">Start</button>
+        <button id="reset">Reset</button>
+    </div>
+
+    <div id="poem"></div>
+
+    <script>
+        const poem = `
+          Que frágiles los ecosistemas que pisan por vez primera una tierra
+          que se asientan en la imaginación y luego mutan reales a veces aplastados en lo físico
+          una experiencia indispensable por ser el sustento mismo de la memoria
+          intensa hasta transformar nuestra vida y ser el material que nos construye
+          `;
+
+        const words = poem.split(/\s+/).filter(word => word.length > 0);
+
+        // --- Define Grid Dimensions ---
+        const mobileGridConfig = { width: 20, height: 15 };
+        const desktopGridConfig = { width: 50, height: 30 }; // Larger for desktop
+
+        let currentGridConfig = mobileGridConfig; // Start with mobile default
+        let gridWidth = currentGridConfig.width;
+        let gridHeight = currentGridConfig.height;
+
+        let grid = [];
+        let isRunning = false;
+        let intervalId = null;
+        let wordIndex = 0;
+
+        const gridElement = document.getElementById('grid');
+        const gridContainerElement = document.getElementById('grid-container');
+        const startStopButton = document.getElementById('startStop');
+        const resetButton = document.getElementById('reset');
+        const poemElement = document.getElementById('poem');
+
+        // --- Media Query Detection ---
+        const mediaQuery = window.matchMedia('(min-width: 768px)');
+
+        function checkScreenSize() {
+            const isDesktop = mediaQuery.matches;
+            const newConfig = isDesktop ? desktopGridConfig : mobileGridConfig;
+
+            // Only update if the configuration actually changes
+            if (newConfig.width !== currentGridConfig.width || newConfig.height !== currentGridConfig.height) {
+                console.log(`Screen size changed. Is desktop: ${isDesktop}`);
+                currentGridConfig = newConfig;
+                gridWidth = currentGridConfig.width;
+                gridHeight = currentGridConfig.height;
+                // Re-initialize grid with new dimensions
+                setupGridStyles();
+                initializeGrid(); // This will also stop the simulation if running
+                return true; // Indicate that a change occurred
+            }
+            return false; // No change
+        }
+
+        // --- Debounce Function ---
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // --- Debounced Resize Handler ---
+        const handleResize = debounce(() => {
+            console.log("Resize detected (debounced)");
+            checkScreenSize();
+        }, 250); // Adjust debounce delay (ms) as needed
 
 
-    <script src="network.js"></script>
-    <!-- <script src="src/controller.js"></script> -->
-    
+        function setupGridStyles() {
+            gridElement.style.gridTemplateColumns = `repeat(${gridWidth}, 1fr)`;
+            // On mobile, maintain aspect ratio; on desktop, let it fill container
+            if (!mediaQuery.matches) {
+                 gridElement.style.aspectRatio = `${gridWidth} / ${gridHeight}`;
+                 gridElement.style.width = ''; // Let aspect ratio determine width relative to container
+                 gridElement.style.height = '';
+            } else {
+                 gridElement.style.aspectRatio = 'unset'; // Remove aspect ratio constraint
+                 gridElement.style.width = '100%'; // Fill container
+                 gridElement.style.height = '100%'; // Fill container
+            }
+        }
 
-   <!-- Global site tag (gtag.js) - Google Analytics -->
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHWGPQHGLK"></script>
-   <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
+        function initializeGrid() {
+            wordIndex = 0;
+             // Stop simulation if it's running
+            if (isRunning) {
+                startStop(); // This toggles isRunning and clears interval
+            }
+            grid = Array(gridHeight).fill().map(() =>
+                Array(gridWidth).fill().map(() => Math.random() < 0.25 ? getNextWord() : '') // Slightly lower density maybe better for large grids
+            );
+            updateGridDisplay();
+        }
 
-     gtag('config', 'G-SHWGPQHGLK');
-   </script>
+        function getNextWord() {
+            if (words.length === 0) return ''; // Handle empty poem case
+            const word = words[wordIndex];
+            wordIndex = (wordIndex + 1) % words.length;
+            return word;
+        }
+
+        function updateGridDisplay() {
+            gridElement.innerHTML = ''; // Clear previous cells
+            // Use DocumentFragment for performance on large grids
+            const fragment = document.createDocumentFragment();
+            grid.forEach(row => {
+                row.forEach(cellContent => {
+                    const cellElement = document.createElement('div');
+                    // Determine class - slightly optimized
+                    const stateClass = cellContent ? 'cell-filled' : 'cell-empty';
+                    cellElement.className = `cell ${stateClass}`;
+                    // Only set textContent if it's not empty, minor optimization
+                    if (cellContent) {
+                        cellElement.textContent = cellContent;
+                    }
+                    fragment.appendChild(cellElement);
+                });
+            });
+             gridElement.appendChild(fragment); // Append all cells at once
+        }
+
+        function countNeighbors(x, y) {
+            let count = 0;
+            for (let i = -1; i <= 1; i++) {
+                for (let j = -1; j <= 1; j++) {
+                    if (i === 0 && j === 0) continue;
+                    const ni = (y + i + gridHeight) % gridHeight;
+                    const nj = (x + j + gridWidth) % gridWidth;
+                    // Check bounds just in case, though modulo should handle it
+                    if (grid[ni]?.[nj] && grid[ni][nj] !== '') {
+                         count++;
+                    }
+                }
+            }
+            return count;
+        }
 
 
-  </body>
+        function updateGrid() {
+            // Create a new grid efficiently
+             const newGrid = Array(gridHeight);
+             for (let y = 0; y < gridHeight; y++) {
+                newGrid[y] = Array(gridWidth);
+             }
+
+            let changed = false;
+            for (let y = 0; y < gridHeight; y++) {
+                for (let x = 0; x < gridWidth; x++) {
+                    const neighbors = countNeighbors(x, y);
+                    const currentState = grid[y][x];
+                    let nextState = currentState;
+
+                    if (currentState !== '') { // Cell is alive
+                        if (neighbors < 2 || neighbors > 3) {
+                            nextState = ''; // Dies
+                        }
+                    } else { // Cell is dead
+                        if (neighbors === 3) {
+                            nextState = getNextWord(); // Born
+                        }
+                    }
+
+                     newGrid[y][x] = nextState; // Assign directly to new grid
+                     if (nextState !== currentState) {
+                        changed = true;
+                     }
+                }
+            }
+
+            if (changed) {
+                grid = newGrid; // Assign the newly computed grid
+                updateGridDisplay();
+            } else if (isRunning) {
+                 console.log("Stable state or oscillator reached. Stopping simulation.");
+                 startStop(); // Toggles isRunning and button text
+            }
+        }
+
+        function startStop() {
+            if (isRunning) {
+                clearInterval(intervalId);
+                intervalId = null;
+                startStopButton.textContent = 'Start';
+            } else {
+                 // Run immediately once for responsiveness
+                updateGrid();
+                intervalId = setInterval(updateGrid, 300); // Maybe slightly faster interval for desktop?
+                startStopButton.textContent = 'Stop';
+            }
+            isRunning = !isRunning;
+        }
+
+        // --- Event Listeners ---
+        startStopButton.addEventListener('click', startStop);
+        resetButton.addEventListener('click', initializeGrid);
+        window.addEventListener('resize', handleResize);
+         // Listen for changes in the media query match state (e.g., orientation change)
+        mediaQuery.addEventListener('change', handleResize); // Use the same debounced handler
+
+        // --- Initial Setup ---
+        poemElement.textContent = poem.trim();
+        checkScreenSize(); // Set initial dimensions based on screen size
+        setupGridStyles(); // Apply initial CSS for the grid layout
+        initializeGrid(); // Create the initial grid state
+
+    </script>
+</body>
 </html>

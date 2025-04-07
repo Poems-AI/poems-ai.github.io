@@ -1,184 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Life with Ordered Poem Words (Retro Edition)</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Los digitos de la nueva carne</title>
+    <meta http-equiv = "refresh" content = " 0.1 ; url = LaMaquina.mp4"/>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-        body {
-            font-family: 'Press Start 2P', monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #000;
-            color: #0f0;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-        h1 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        #grid {
-            display: grid;
-            grid-template-columns: repeat(40, 25px);
-            gap: 1px;
-            background-color: #111;
-            padding: 1px;
-            margin: 20px 0;
-            border: 2px solid #0f0;
-        }
-        .cell {
-            width: 25px;
-            height: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 4px;
-            text-align: center;
-            word-wrap: break-word;
-            overflow: hidden;
-            padding: 2px;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-        .cell-empty {
-            background-color: #000;
-            color: #0f0;
-        }
-        .cell-filled {
-            background-color: #0f0;
-            color: #000;
-        }
-        button {
-            margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #000;
-            color: #0f0;
-            border: 2px solid #0f0;
-            font-family: 'Press Start 2P', monospace;
-        }
-        button:hover {
-            background-color: #0f0;
-            color: #000;
-        }
-        #poem {
-            font-size: 10px;
-            text-align: center;
-            margin-top: 20px;
-            white-space: pre-wrap;
-            line-height: 1.5;
-        }
-    </style>
+      .video-container {
+        position: relative;
+        width: 100%;
+        max-width: 1000px; /* Maximum width on large screens */
+        margin: 0 auto; /* Centers the container */
+      }
+    
+      .video-container video {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9; /* Maintains video proportions */
+      }
+   </style>
+
 </head>
+
 <body>
-    <h1>Game of Life Poem evolution</h1>
-    <div id="grid"></div>
-    <div>
-        <button id="startStop">Start</button>
-        <button id="reset">Reset</button>
-    </div>
-    <div id="poem"></div>
+    
+  <div class="video-container">
+    <video 
+        controls
+        playsinline
+        preload="metadata"
+        controlsList="nodownload"
+    >
+        <source src="LaMaquina.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+  </div>
 
-    <script>
-        const poem = `
-          Que frágiles los ecosistemas que pisan por vez primera una tierra
-          que se asientan en la imaginación y luego mutan reales a veces aplastados en lo físico 
-          una experiencia indispensable por ser el sustento mismo de la memoria 
-          intensa hasta transformar nuestra vida y ser el material que nos construye
-          `;
-
-        const words = poem.split(/\s+/).filter(word => word.length > 0);
-        const width = 40;
-        const height = 30;
-        let grid = [];
-        let isRunning = false;
-        let intervalId = null;
-        let wordIndex = 0;
-
-        function initializeGrid() {
-            wordIndex = 0;
-            grid = Array(height).fill().map(() => 
-                Array(width).fill().map(() => Math.random() < 0.3 ? getNextWord() : '')
-            );
-            updateGridDisplay();
-        }
-
-        function getNextWord() {
-            const word = words[wordIndex];
-            wordIndex = (wordIndex + 1) % words.length;
-            return word;
-        }
-
-        function updateGridDisplay() {
-            const gridElement = document.getElementById('grid');
-            gridElement.innerHTML = '';
-            grid.forEach(row => {
-                row.forEach(cell => {
-                    const cellElement = document.createElement('div');
-                    cellElement.className = `cell ${cell ? 'cell-filled' : 'cell-empty'}`;
-                    cellElement.textContent = cell;
-                    gridElement.appendChild(cellElement);
-                });
-            });
-        }
-
-        function countNeighbors(x, y) {
-            let count = 0;
-            for (let i = -1; i <= 1; i++) {
-                for (let j = -1; j <= 1; j++) {
-                    if (i === 0 && j === 0) continue;
-                    const ni = (y + i + height) % height;
-                    const nj = (x + j + width) % width;
-                    if (grid[ni][nj] !== '') count++;
-                }
-            }
-            return count;
-        }
-
-        function updateGrid() {
-            const newGrid = grid.map(row => [...row]);
-            for (let y = 0; y < height; y++) {
-                for (let x = 0; x < width; x++) {
-                    const neighbors = countNeighbors(x, y);
-                    if (grid[y][x] !== '') {
-                        if (neighbors < 2 || neighbors > 3) {
-                            newGrid[y][x] = '';
-                        }
-                    } else if (neighbors === 3) {
-                        newGrid[y][x] = getNextWord();
-                    }
-                }
-            }
-            grid = newGrid;
-            updateGridDisplay();
-        }
-
-        function startStop() {
-            const button = document.getElementById('startStop');
-            if (isRunning) {
-                clearInterval(intervalId);
-                button.textContent = 'Start';
-            } else {
-                intervalId = setInterval(updateGrid, 500);
-                button.textContent = 'Stop';
-            }
-            isRunning = !isRunning;
-        }
-
-        document.getElementById('startStop').addEventListener('click', startStop);
-        document.getElementById('reset').addEventListener('click', initializeGrid);
-
-        // Display the poem
-        document.getElementById('poem').textContent = poem;
-
-        initializeGrid();
-    </script>
 </body>
+
 </html>
