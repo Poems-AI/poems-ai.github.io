@@ -164,8 +164,34 @@ function testPage(pageNumber, htmlContent) {
 
   // Additional checks for specific page types
   if (/p5\.min\.js/i.test(htmlContent)) {
-    // p5.js pages should have windowResized function
-    if (!/windowResized/i.test(htmlContent)) {
+    // p5.js pages should have windowResized function (check in HTML or external JS files)
+    let hasWindowResized = /windowResized/i.test(htmlContent);
+    
+    if (!hasWindowResized) {
+      // Check external JavaScript files referenced in the HTML
+      const jsFileMatches = htmlContent.matchAll(/<script\s+src=["']([^"']+\.js)["']/gi);
+      for (const match of jsFileMatches) {
+        const jsFilePath = match[1];
+        // Handle relative paths
+        const fullJsPath = jsFilePath.startsWith('/') ? 
+          path.join('.', jsFilePath) : 
+          path.join(PAGES_DIR, pageNumber.toString(), jsFilePath);
+        
+        if (fs.existsSync(fullJsPath)) {
+          try {
+            const jsContent = fs.readFileSync(fullJsPath, 'utf8');
+            if (/windowResized/i.test(jsContent)) {
+              hasWindowResized = true;
+              break;
+            }
+          } catch (error) {
+            // Ignore file read errors for external JS files
+          }
+        }
+      }
+    }
+    
+    if (!hasWindowResized) {
       pageResult.issues.push('p5.js page missing windowResized() function');
       pageResult.passed = false;
     }
@@ -278,3 +304,4 @@ if (require.main === module) {
 }
 
 module.exports = { runMobileCompatibilityTests, testPage, parseHTML };
+
