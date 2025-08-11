@@ -114,9 +114,14 @@ function testPage(pageNumber, htmlContent) {
   const hasMediaQueries = parsed.mediaQueries.length > 0;
   const hasResponsiveUnits = parsed.responsiveUnits.length > 0;
   const hasFlexibleLayout = /(?:flex|grid|100vw|100vh|windowWidth|windowHeight)/i.test(htmlContent);
+  const isRedirectPage = /meta.*refresh.*url\s*=/i.test(htmlContent);
 
   if (hasMediaQueries || hasResponsiveUnits || hasFlexibleLayout) {
     pageResult.features.responsiveDesign = true;
+  } else if (isRedirectPage) {
+    // Redirect pages don't need complex responsive design patterns
+    pageResult.features.responsiveDesign = true;
+    pageResult.details.pageType = 'redirect';
   } else {
     pageResult.issues.push('No responsive design patterns detected');
     pageResult.passed = false;
@@ -304,4 +309,5 @@ if (require.main === module) {
 }
 
 module.exports = { runMobileCompatibilityTests, testPage, parseHTML };
+
 
