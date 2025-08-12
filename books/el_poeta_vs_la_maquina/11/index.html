@@ -8,43 +8,114 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <style>
 
+        body {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          touch-action: manipulation;
+        }
+
         #playbutton {
           z-index: 10000000;
-       
           position: absolute;
-          top:35%;
-          left: 25%; 
-          width: 50%; 
-
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: clamp(280px, 60vw, 500px);
+          min-height: 44px; /* Minimum touch target size */
+          padding: clamp(12px, 3vw, 24px);
           background-color: white;
-          border-color: black;
-
-          /* display: flex;
-          justify-content: center;
+          border: 2px solid black;
+          border-radius: clamp(8px, 2vw, 16px);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
           align-items: center;
-          text-align: center;
-          min-height: 100vh; */
+          justify-content: center;
+        }
 
+        #playbutton:hover {
+          background-color: #f0f0f0;
+          transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        #playbutton:active {
+          transform: translate(-50%, -50%) scale(0.95);
         }
 
         .logo {
           width: 100%;
+          max-width: clamp(120px, 25vw, 200px);
+          height: auto;
+          margin-bottom: clamp(8px, 2vw, 16px);
         }
-        .mindar-ui-overlay{
+
+        .mindar-ui-overlay {
           z-index: -10;
         }
       
         #arapp {
           visibility: hidden;
-         
         }
  
-        .buttontext{
-        
-          font-size:x-large;
+        .buttontext {
+          font-size: clamp(14px, 4vw, 20px);
           font-weight: 600;
-          color:black;
+          color: black;
+          text-align: center;
+          line-height: 1.4;
+          margin: 0;
+        }
+
+        /* Tablet-specific adjustments */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+          #playbutton {
+            width: clamp(320px, 50vw, 450px);
+            padding: clamp(16px, 2.5vw, 20px);
+          }
           
+          .buttontext {
+            font-size: clamp(16px, 3.5vw, 18px);
+          }
+        }
+
+        /* Mobile-specific adjustments */
+        @media screen and (max-width: 767px) {
+          #playbutton {
+            width: clamp(260px, 80vw, 350px);
+            padding: clamp(16px, 4vw, 20px);
+            min-height: 48px; /* Larger touch target on mobile */
+          }
+          
+          .logo {
+            max-width: clamp(100px, 30vw, 150px);
+          }
+          
+          .buttontext {
+            font-size: clamp(16px, 5vw, 18px);
+          }
+        }
+
+        /* Small mobile devices */
+        @media screen and (max-width: 480px) {
+          #playbutton {
+            width: clamp(240px, 85vw, 300px);
+            padding: clamp(12px, 5vw, 16px);
+          }
+          
+          .buttontext {
+            font-size: clamp(14px, 4.5vw, 16px);
+          }
+        }
+
+        /* Landscape orientation on mobile */
+        @media screen and (max-width: 767px) and (orientation: landscape) {
+          #playbutton {
+            width: clamp(300px, 60vw, 400px);
+            padding: clamp(12px, 3vw, 16px);
+          }
         }
     </style>
 

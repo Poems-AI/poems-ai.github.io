@@ -13,9 +13,30 @@
     <title>En las Nuves</title>
 
     <style>
-      body {padding: 0px;
-            margin:0px;
-            background-color:#000;} 
+      body {
+        padding: 0px;
+        margin: 0px;
+        background-color: #000;
+        overflow: hidden; /* Prevent scrolling on mobile */
+        touch-action: manipulation; /* Improve touch responsiveness */
+      }
+      
+      /* Ensure canvas is properly sized on mobile */
+      main {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+      }
+      
+      /* Mobile-specific adjustments */
+      @media screen and (max-width: 768px) {
+        body {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -35,3 +56,4 @@
  
   </body>
 </html>
+

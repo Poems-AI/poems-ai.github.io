@@ -15,20 +15,64 @@
     </title>
 
     <style>
-      body {padding: 0px;
-            margin:0px;
-            background-color:#000;} 
+      body {
+        padding: 0px;
+        margin: 0px;
+        background-color: #000;
+        overflow: hidden; /* Prevent scrolling on mobile */
+        touch-action: manipulation; /* Improve touch responsiveness */
+      }
+      
+      /* Ensure canvas is properly sized on mobile */
+      main {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+      } 
 
       .widget{
         color: white;
-        position:fixed ;
-        top: 50px;
+        position: fixed;
+        top: 5vh;
         background-color: rgba(100, 100, 100, 0.8);
-        width: 25%;
-        height: 50%;
-        left: 64px;
-        font-size: 8px;
-        padding: 16px;
+        width: 25vw;
+        height: 50vh;
+        left: 5vw;
+        font-size: clamp(8px, 1.5vw, 16px);
+        padding: 2vw;
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 400px;
+      }
+
+      /* Mobile responsive adjustments */
+      @media screen and (max-width: 768px) {
+        body {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        
+        .widget {
+          width: 90vw;
+          height: 40vh;
+          left: 5vw;
+          top: 10vh;
+          font-size: clamp(10px, 2.5vw, 14px);
+          padding: 3vw;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .widget {
+          width: 95vw;
+          height: 35vh;
+          left: 2.5vw;
+          top: 15vh;
+          font-size: clamp(12px, 3vw, 16px);
+          padding: 4vw;
+        }
       }
     </style>
   </head>
@@ -52,3 +96,6 @@
 
   </body>
 </html>
+
+
+
