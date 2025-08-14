@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <style>
+
+        body {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          touch-action: manipulation;
+        }
+
+        #playbutton {
+          z-index: 10000000;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: clamp(280px, 60vw, 500px);
+          min-height: 44px; /* Minimum touch target size */
+          padding: clamp(12px, 3vw, 24px);
+          background-color: white;
+          border: 2px solid black;
+          border-radius: clamp(8px, 2vw, 16px);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        #playbutton:hover {
+          background-color: #f0f0f0;
+          transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        #playbutton:active {
+          transform: translate(-50%, -50%) scale(0.95);
+        }
+
+        .logo {
+          width: 100%;
+          max-width: clamp(120px, 25vw, 200px);
+          height: auto;
+          margin-bottom: clamp(8px, 2vw, 16px);
+        }
+
+        .mindar-ui-overlay {
+          z-index: -10;
+        }
+      
+        #arapp {
+          visibility: hidden;
+        }
+ 
+        .buttontext {
+          font-size: clamp(14px, 4vw, 20px);
+          font-weight: 600;
+          color: black;
+          text-align: center;
+          line-height: 1.4;
+          margin: 0;
+        }
+
+        /* Tablet-specific adjustments */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+          #playbutton {
+            width: clamp(320px, 50vw, 450px);
+            padding: clamp(16px, 2.5vw, 20px);
+          }
+          
+          .buttontext {
+            font-size: clamp(16px, 3.5vw, 18px);
+          }
+        }
+
+        /* Mobile-specific adjustments */
+        @media screen and (max-width: 767px) {
+          #playbutton {
+            width: clamp(260px, 80vw, 350px);
+            padding: clamp(16px, 4vw, 20px);
+            min-height: 48px; /* Larger touch target on mobile */
+          }
+          
+          .logo {
+            max-width: clamp(100px, 30vw, 150px);
+          }
+          
+          .buttontext {
+            font-size: clamp(16px, 5vw, 18px);
+          }
+        }
+
+        /* Small mobile devices */
+        @media screen and (max-width: 480px) {
+          #playbutton {
+            width: clamp(240px, 85vw, 300px);
+            padding: clamp(12px, 5vw, 16px);
+          }
+          
+          .buttontext {
+            font-size: clamp(14px, 4.5vw, 16px);
+          }
+        }
+
+        /* Landscape orientation on mobile */
+        @media screen and (max-width: 767px) and (orientation: landscape) {
+          #playbutton {
+            width: clamp(300px, 60vw, 400px);
+            padding: clamp(12px, 3vw, 16px);
+          }
+        }
+    </style>
+
+  </head>
+  <body>
+    <button id="playbutton" onclick="play()">
+      <img class="logo" src="images/logo_ar.png" alt="">
+      <div class="buttontext">
+        <br>
+        Point the camera to
+        <br>Bowery Poetry Club <br><br>
+        click to start
+        <br> <br>
+      </div>
+
+     </button>
+
+    <div id="arapp"> 
+      <a-scene mindar-image="imageTargetSrc: card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+          <img id="card" src="card.jpg" />
+          <a-asset-item id="avatarModel" src="poet.glb"></a-asset-item>
+        </a-assets>
+  
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        
+   
+  
+       <a-entity  mindar-image-target="targetIndex: 0"> 
+          <!-- <a-plane src="#card" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane> -->
+          <a-gltf-model rotation="90 0 0 " position="-0.2 0 0" scale="0.03 0.03 0.03" src="#avatarModel"  animation-mixer >
+        </a-entity>
+      </a-scene> 
+          <!-- <a-sound src="src: url(Marcos_Vialia_recorte.mp3)" autoplay="true" position="0 0 0"></a-sound> --> 
+    </div>
+  
+
+    <script>
+    var playButton = document.getElementById("playbutton");
+    var ARApp = document.getElementById("arapp");
+    var overlay = document.getElementsByClassName("mindar-ui-overlay");
+
+    var sound = new Howl({
+      src: ['Marcos_Vialia_recorte.mp3'],
+      loop: true,
+      volume: 1,
+    });
+
+    function play(){
+      sound.play();
+      playButton.style.visibility = "hidden";
+      ARApp.style.visibility='visible';
+      overlay.style.zIndex = "10";
+    }
+    
+    </script>
+  </body>
+</html>
