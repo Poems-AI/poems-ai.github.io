@@ -1,9 +1,9 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image-aframe.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <style>
@@ -13,7 +13,6 @@
           padding: 0;
           overflow: hidden;
           touch-action: manipulation;
-          background-color: black;
         }
 
         #playbutton {
@@ -25,8 +24,8 @@
           width: clamp(280px, 60vw, 500px);
           min-height: 44px; /* Minimum touch target size */
           padding: clamp(12px, 3vw, 24px);
-          background-color: black;
-          border: 2px solid white;
+          background-color: white;
+          border: 2px solid black;
           border-radius: clamp(8px, 2vw, 16px);
           cursor: pointer;
           transition: all 0.3s ease;
@@ -38,7 +37,7 @@
         }
 
         #playbutton:hover {
-          background-color: #333;
+          background-color: #f0f0f0;
           transform: translate(-50%, -50%) scale(1.05);
         }
 
@@ -64,7 +63,7 @@
         .buttontext {
           font-size: clamp(14px, 4vw, 20px);
           font-weight: 600;
-          color: white;
+          color: black;
           text-align: center;
           line-height: 1.4;
           margin: 0;
@@ -166,16 +165,10 @@
     });
 
     function play(){
-      // Start the sound and show the AR scene
       sound.play();
       playButton.style.visibility = "hidden";
-      try {
-        ARApp.style.visibility='visible';
-        overlay.style.zIndex = "10";
-      } catch (error) {
-        console.error("Error launching AR app:", error);
-        alert("Failed to launch AR experience. Please check console for details.");
-      }
+      ARApp.style.visibility='visible';
+      overlay.style.zIndex = "10";
     }
     
     </script>
