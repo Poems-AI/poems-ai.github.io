@@ -4,98 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="/js/p5.min.js"></script>
-    <script src="/js/p5.sound.min.js"></script>
-    <script src="/js/p5.speech.js"></script>
-    <script src="/js/p5.asciiart.min.js"></script>
-    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
-    <script src="https://unpkg.com/rita@2.4.211/dist/rita.js"></script>
-    <title>Inimitables
-
-    </title>
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Quemar después de vender</title>
+    <meta http-equiv = "refresh" content = " 0.1 ; url = QuemarDespuesDeVender.mp4"/>
     <style>
-      body {
-        padding: 0px;
-        margin: 0px;
-        background-color: #000;
-        overflow: hidden; /* Prevent scrolling on mobile */
-        touch-action: manipulation; /* Improve touch responsiveness */
+      .video-container {
+        position: relative;
+        width: 100%;
+        max-width: 1000px; /* Maximum width on large screens */
+        margin: 0 auto; /* Centers the container */
       }
-      
-      /* Ensure canvas is properly sized on mobile */
-      main {
-        width: 100vw;
-        height: 100vh;
-        display: block;
-      } 
-
-      .widget{
-        color: white;
-        position: fixed;
-        top: 5vh;
-        background-color: rgba(100, 100, 100, 0.8);
-        width: 25vw;
-        height: 50vh;
-        left: 5vw;
-        font-size: clamp(8px, 1.5vw, 16px);
-        padding: 2vw;
-        box-sizing: border-box;
-        min-width: 200px;
-        max-width: 400px;
-      }
-
-      /* Mobile responsive adjustments */
-      @media screen and (max-width: 768px) {
-        body {
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
-        
-        .widget {
-          width: 90vw;
-          height: 40vh;
-          left: 5vw;
-          top: 10vh;
-          font-size: clamp(10px, 2.5vw, 14px);
-          padding: 3vw;
-        }
-      }
-
-      @media screen and (max-width: 480px) {
-        .widget {
-          width: 95vw;
-          height: 35vh;
-          left: 2.5vw;
-          top: 15vh;
-          font-size: clamp(12px, 3vw, 16px);
-          padding: 4vw;
-        }
-      }
-    </style>
-  </head>
-  <body>
-
-
-    <script src="network.js"></script>
-    <!-- <script src="src/controller.js"></script> -->
     
+      .video-container video {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9; /* Maintains video proportions */
+      }
+   </style>
 
-   <!-- Global site tag (gtag.js) - Google Analytics -->
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHWGPQHGLK"></script>
-   <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
+</head>
 
-     gtag('config', 'G-SHWGPQHGLK');
-   </script>
+<body style="background-color: black;">
+    
+  <div class="video-container">
+    <video 
+        controls
+        playsinline
+        preload="metadata"
+        controlsList="nodownload"
+    >
+        <source src="QuemarDespuesDeVender.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+  </div>
 
-
-  </body>
+</body>
 </html>
-
-
-
