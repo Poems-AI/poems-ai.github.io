@@ -17,29 +17,27 @@
   
 
   <!-- Sidebar (hidden by default) -->
-  <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-right w3-black " style="display:none;z-index:2;width:15%;min-width:300px;color: #000000;right:0;" id="mySidebar">
+  <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-right w3-black " style="display:none;z-index:1100;width:250px;max-width:80%;color: #000000;right:0;" id="mySidebar">
       <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile" style="text-align: right;" >X</a>
       <a href="#projects" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Projects</a>
-      <a href="ar/index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile" target="_blank">AR</a>
       <a href="#Events" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Events</a>
       <a href="gallery.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile" target="_blank">Gallery</a>
       <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Contact</a>
-      <!-- <a href="#media" onclick="w3_close()" class="w3-bar-item w3-button">Media</a>
-      <a href="#events" onclick="w3_close()" class="w3-bar-item w3-button">Eventos</a> -->
       <a href="prensa.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile" target="_blank">Press</a>
+      <a href="/books/el_poeta_vs_la_maquina/index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Book</a>
   </nav>
 
 
 <!-- Top menu -->
-  <div class=" w3-container " style="background: rgb(255, 255, 255); ">
-      <img src="images/Poetry+AI color-25.png" alt="Logo Poetry+AI=Art" class="headerLogo">
+  <div class="w3-container header-container" style="background: rgb(255, 255, 255); ">
+      <a href="index.html"><img src="images/Poetry+AI color-25.png" alt="Logo Poetry+AI=Art" class="headerLogo"></a>
       <div class=" w3-top w3-right-align right_menu w3-white"  onclick="w3_open()" >☰</div>
   </div>
 
 <!-- Header image background -->
 <!-- <div class="header_bg"> -->
   <div class="video-container"  >
-    <iframe src="https://www.youtube.com/embed/0HhIeaeTxHI?si=DvLKStsUjVt9PCMG?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=0HhIeaeTxHI" >  </iframe>
+    <iframe src="https://www.youtube.com/embed/0HhIeaeTxHI?si=DvLKStsUjVt9PCMG?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=0HhIeaeTxHI" title="Poetry+AI=Art Video" allow="autoplay; encrypted-media" frameborder="0">  </iframe>
   </div>
   
   <!-- <div class="w3-row ">
@@ -82,55 +80,62 @@
 <!-- proyects -->
 <h1 class="secTitle" >Projects</h1>
 <div id="projects">
-  
+
+  <div id="Book"  class="w3-container w3-padding  w3-center project_maquet"  >
+    <a href="/books/el_poeta_vs_la_maquina/index.html" >
+      <div class="w3-row">
+        <div class="w3-half w3-margin-bottom pagesnumber">
+          01
+        </div>
+        <div class="w3-half w3-margin-bottom w3-left-align project_content">
+          <img src="/books/el_poeta_vs_la_maquina/book_picture.jpg" alt="El poeta vs. la máquina" class="visible_img" style="max-width: 200px;">
+          <p class="p_project">El poeta vs. la máquina - A book exploring the intricate codes of personhood in a digital landscape.</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
   <div id="DigitalPoet"  class="w3-container w3-padding  w3-center project_maquet"  >
     <a href="digital_poet_en.html" >
-      <div class="w3-half w3-margin-bottom pagesnumber"> 
-        01
-      </div>
-      <div class="w3-half w3-margin-bottom w3-left-align">
-        <img src="images/section_logo/DigitalPoet_blanco.png" alt="" class="visible_img">
-        <img src="images/section_logo/DigitalPoet_blanco+tricolor.png" alt="" class="hidden_img" >
-        <p class="p_project">Digital Twin, the poet's avatar in his own metaverse.</p>
+      <div class="w3-row">
+        <div class="w3-half w3-margin-bottom pagesnumber">
+          02
+        </div>
+        <div class="w3-half w3-margin-bottom w3-left-align project_content">
+          <img src="images/section_logo/DigitalPoet_blanco.png" alt="Digital Poet" class="visible_img">
+          <img src="images/section_logo/DigitalPoet_blanco+tricolor.png" alt="Digital Poet" class="hidden_img" >
+          <p class="p_project">Digital Twin, the poet's avatar in his own metaverse.</p>
+        </div>
       </div>
     </a>
   </div>
 
   <div id="NFTs"  class="w3-container w3-padding w3-center project_maquet"  >
     <a href="NFTs_collection.html" >
-      <div class="w3-half w3-margin-bottom pagesnumber">
-        02
-      </div>
-      <div class="w3-half w3-margin-bottom w3-left-align">
-        <img src="images/section_logo/NFTsCollection_blanco.png" alt="" class="visible_img" >
-        <img src="images/section_logo/NFTsCollection_blanco+tricolor.png" alt="" class="hidden_img" >
-        <p class="p_project">Collections NFTs, images and videos generated from the poems.</p>
+      <div class="w3-row">
+        <div class="w3-half w3-margin-bottom pagesnumber">
+          03
+        </div>
+        <div class="w3-half w3-margin-bottom w3-left-align project_content">
+          <img src="images/section_logo/NFTsCollection_blanco.png" alt="NFTs Collection" class="visible_img" >
+          <img src="images/section_logo/NFTsCollection_blanco+tricolor.png" alt="NFTs Collection" class="hidden_img" >
+          <p class="p_project">Collections NFTs, images and videos generated from the poems.</p>
+        </div>
       </div>
     </a>
   </div>
 
   <div id="TheBrain"  class="w3-container w3-padding w3-center project_maquet"  >
     <a href="thebrain.html" >
-      <div class="w3-half w3-margin-bottom pagesnumber">
-        03
-      </div>
-      <div class="w3-half w3-margin-bottom w3-left-align">
-        <img src="images/section_logo/TheBrainGallery_blanco.png" alt="" class="visible_img">
-        <img src="images/section_logo/TheBrainGallery_blanco+tricolor.png" alt="" class="hidden_img" >
-        <p class="p_project"> Interactive proposal with artificial intelligence, create your own poems.</p>
-      </div>
-    </a>
-  </div>
-
-  <div id="Metaverse"  class="w3-container w3-padding w3-center project_maquet" >
-    <a href="https://hubs.mozilla.com/e7WqcQf/the-poet-vs-the-machine/" target="_blank" >
-      <div class="w3-half w3-margin-bottom pagesnumber">
-        04
-      </div>
-      <div class="w3-half w3-margin-bottom w3-left-align  ">
-        <img src="images/section_logo/MetaverseShows_blanco_.png" alt="" class="visible_img"  >
-        <img src="images/section_logo/Metaverso_blanco+tricolor_.png" alt="" class="hidden_img"  > 
-        <p class="p_project">Poems collection by Marcos de la Fuente, combined with visualizations created by AI and music.</p>
+      <div class="w3-row">
+        <div class="w3-half w3-margin-bottom pagesnumber">
+          04
+        </div>
+        <div class="w3-half w3-margin-bottom w3-left-align project_content">
+          <img src="images/section_logo/TheBrainGallery_blanco.png" alt="The Brain Gallery" class="visible_img">
+          <img src="images/section_logo/TheBrainGallery_blanco+tricolor.png" alt="The Brain Gallery" class="hidden_img" >
+          <p class="p_project"> Interactive proposal with artificial intelligence, create your own poems.</p>
+        </div>
       </div>
     </a>
   </div>
@@ -324,9 +329,9 @@
     <a href="https://github.com/Poems-AI" class="fa fa-github" target="_blank"></a>
   </div>
 
-  <div id="contact" class="w3-half w3-container  w3-center ">
+  <div id="contact" class="w3-half w3-container  w3-center contact-form-container">
 
-    <iframe src="https://cdn.forms-content.sg-form.com/a8ecc6a8-845b-11ec-a482-e23143a44877" class="screen-body" style="transform: translate(-50%, 0%);" ></iframe> <!-- scrolling="no" -->
+    <iframe src="https://cdn.forms-content.sg-form.com/a8ecc6a8-845b-11ec-a482-e23143a44877" class="screen-body" title="Contact Form"></iframe>
 
   </div>
 </div>

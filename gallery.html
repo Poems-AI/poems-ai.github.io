@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>W3.CSS Template</title>
+<title>Gallery - Poetry+AI=Art</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="css.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-.w3-quarter img{margin-bottom: -6px; cursor: pointer}
-.w3-quarter img:hover{opacity: 0.6; transition: 0.3s}
+.w3-third img{margin-bottom: 16px; cursor: pointer}
+.w3-third img:hover{opacity: 0.8; transition: 0.3s}
+.gallery-grid {
+    padding: 16px;
+}
 </style>
 </head>
-<body class="w3-light-grey">
+<body>
 
-    <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-white w3-xlarge w3-padding-16">
-    <span class="w3-left w3-padding">PHOTO GALLERY</span>
-</header>
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-right w3-black " style="display:none;z-index:1100;width:250px;max-width:80%;color: #000000;right:0;" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile" style="text-align: right;" >X</a>
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Home</a>
+    <a href="index.html#projects" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Projects</a>
+    <a href="index.html#Events" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Events</a>
+    <a href="prensa.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile" target="_blank">Press</a>
+    <a href="/books/el_poeta_vs_la_maquina/index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Book</a>
+</nav>
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content" style="max-width:1600px;margin-top:83px">
-  
+<!-- Top menu -->
+<div class="w3-container header-container" style="background: rgb(255, 255, 255);">
+    <a href="index.html"><img src="images/Poetry+AI color-25.png" alt="Logo Poetry+AI=Art" class="headerLogo"></a>
+    <div class="w3-top w3-right-align right_menu w3-white" onclick="w3_open()">☰</div>
+</div>
+
+<!-- Page Header -->
+<h1 class="secTitle">Gallery</h1>
+
+<!-- Page Content -->
+<div class="w3-content gallery-grid" style="max-width:1400px">
+
     <!-- Photo grid -->
-    <div class="w3-row w3-grayscale-min" >
-        <div class=" w3-third">
-            <img src="/images/Photo_gallery/IMG_1.jpg" style="width:100%" onclick="onClick(this)" alt="ArtPoet">
+    <div class="w3-row">
+        <div class="w3-third w3-container">
+            <img src="images/Photo_gallery/IMG_1.jpg" style="width:100%" onclick="onClick(this)" alt="Poetry+AI=Art Event">
         </div>
-        <div class=" w3-third">
-            <img src="/images/Photo_gallery/IMG_2.jpg" style="width:100%" onclick="onClick(this)" alt="ArtPoet">
+        <div class="w3-third w3-container">
+            <img src="images/Photo_gallery/IMG_2.jpg" style="width:100%" onclick="onClick(this)" alt="Poetry+AI=Art Event">
         </div>
-        <div class=" w3-third">
-            <img src="/images/Photo_gallery/IMG_3.jpg" style="width:100%" onclick="onClick(this)" alt="ArtPoet">
+        <div class="w3-third w3-container">
+            <img src="images/Photo_gallery/IMG_3.jpg" style="width:100%" onclick="onClick(this)" alt="Poetry+AI=Art Event">
         </div>
-        
-        
     </div>
 
     <!-- Modal for full size images on click-->
@@ -49,6 +65,26 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- End page content -->
 </div>
 
+<!-- Footer -->
+<div id="media" class="w3-row w3-padding-64" style="background-color: aquamarine; margin-top: 100px;">
+
+  <div class="w3-half w3-container w3-margin-bottom w3-center socialMediaLinks">
+    <a href="https://twitter.com/artpoet2" class="fa fa-twitter" target="_blank"> </a>
+    <a href="https://www.facebook.com/marcosmaniquies" class="fa fa-facebook-official" target="_blank"></a>
+    <a href="https://www.instagram.com/marcos_delafuente/" class="fa fa-instagram" target="_blank"></a>
+    <a href="https://www.youtube.com/user/Waskoi" class="fa fa-youtube" target="_blank"></a>
+    <a href="https://github.com/Poems-AI" class="fa fa-github" target="_blank"></a>
+  </div>
+
+  <div id="contact" class="w3-half w3-container w3-center contact-form-container">
+    <iframe src="https://cdn.forms-content.sg-form.com/a8ecc6a8-845b-11ec-a482-e23143a44877" class="screen-body" title="Contact Form"></iframe>
+  </div>
+</div>
+
+<footer class="w3-container w3-center w3-padding-64">
+  <span>&#169;</span> Poetry+AI=ART 2022, All Rights Reserved
+</footer>
+
 <script>
 // Modal Image Gallery
 function onClick(element) {
@@ -56,6 +92,15 @@ function onClick(element) {
   document.getElementById("modal01").style.display = "block";
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
+}
+
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
 }
 </script>
 

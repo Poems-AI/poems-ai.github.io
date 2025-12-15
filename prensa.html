@@ -9,8 +9,37 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-    body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
+    body,h1,h2,h3,h4,h5,h6 {
+        font-family: "Karma", sans-serif;
+        color: #fff !important;
+    }
     .w3-bar-block .w3-bar-item {padding:20px}
+    .press-articles img {
+        transition: all 0.3s ease;
+    }
+    .press-articles img:hover {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    .date {
+        color: rgb(159, 159, 159) !important;
+    }
+    p, span, div, a {
+        color: #fff !important;
+    }
+    .press_title {
+        color: #fff !important;
+    }
+    #\#news * {
+        color: #fff !important;
+    }
+    .press_title a {
+        color: #fff !important;
+        text-decoration: none;
+    }
+    .press_title a:hover {
+        color: rgb(127,255,212) !important;
+    }
 </style>
 <script src="js/p5.min.js"></script>
 <script src="js/p5.sound.min.js"></script>
@@ -18,92 +47,117 @@
 <script src="js/p5.asciiart.min.js"></script>
 <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
 
-<title>Poesia + IA = ARTE : news</title>
-
-<style>
-    body {padding: 0px;
-        margin:0px;
-        color: rgb(3, 0, 0);
-        background-color:#fff;
-        font: inherit;} 
-    a:link {
-        text-decoration: none;}
-   
-</style>
+<title>Press - Poetry+AI=Art</title>
 </head>
 
 <body>
 
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-right w3-black " style="display:none;z-index:1100;width:250px;max-width:80%;color: #000000;right:0;" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile" style="text-align: right;" >X</a>
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Home</a>
+    <a href="index.html#projects" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Projects</a>
+    <a href="index.html#Events" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Events</a>
+    <a href="gallery.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Gallery</a>
+    <a href="/books/el_poeta_vs_la_maquina/index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Book</a>
+</nav>
+
+<!-- Top menu -->
+<div class="w3-container header-container" style="background: rgb(255, 255, 255);">
+    <a href="index.html"><img src="images/Poetry+AI color-25.png" alt="Logo Poetry+AI=Art" class="headerLogo"></a>
+    <div class="w3-top w3-right-align right_menu w3-white" onclick="w3_open()">☰</div>
+</div>
+
+<!-- Page Header -->
+<h1 class="secTitle">Press</h1>
+
+<!--   Here is the container for the news that feeds from the spreadsheet-->
+<div id="#news" class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:50px">
+
+</div>
 
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
-    <h1 class="3-container " style="text-transform: uppercase;"> Prensa</h1>
-    <!-- <p>Para contacto de prensa escriba al siguiente email, gracias.</p> -->
-</div>
-<hr>
+    <h2 class="w3-center" style="color: rgb(127,255,212); font-size: 48px; text-transform: uppercase; margin-bottom: 50px;">Articles</h2>
 
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
-<!--   Here is the cointainer for the news that feeds from the spreadsheet-->
-<div  id="#news" class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
-    
-</div>
-
-
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:300px">
-    <h1 class="3-container " style="text-transform: uppercase;">Artículos</h1>
-
-   
-    <div class="w3-row-padding  w3-center" id="Articulos">
-        <div class="w3-col" style="width: 350px;">
-            <a href="images/recortes_prensa/20221228-Atlantico.jpg" target="_blank" >
-            <img src="images/recortes_prensa/20221228-Atlantico.jpg" alt="Periodico_atlantico" style="height:120px" >
+    <div class="w3-row-padding w3-center press-articles" id="Articulos">
+        <div class="w3-col w3-quarter w3-margin-bottom">
+            <a href="images/recortes_prensa/20221228-Atlantico.jpg" target="_blank">
+                <img src="images/recortes_prensa/20221228-Atlantico.jpg" alt="Periodico Atlantico" style="width:100%; max-height:200px; object-fit:cover;">
             </a>
-            <div class="w3-padding date" style="font-size: 8px;">December 28,2022</div>
+            <div class="w3-padding date">December 28, 2022</div>
         </div>
-        <div class="w3-col" style="width: 350px;">
-            <a href="images/recortes_prensa/2022.04.09. La Voz.jpg" target="_blank" >
-            <img src="images/recortes_prensa/2022.04.09. La Voz.jpg" alt="Periodico_lavozdegalicia" style="height:120px" >
+        <div class="w3-col w3-quarter w3-margin-bottom">
+            <a href="images/recortes_prensa/2022.04.09. La Voz.jpg" target="_blank">
+                <img src="images/recortes_prensa/2022.04.09. La Voz.jpg" alt="La Voz de Galicia" style="width:100%; max-height:200px; object-fit:cover;">
             </a>
-            <div class="w3-padding date" style="font-size: 8px;">April 9,2022</div>
+            <div class="w3-padding date">April 9, 2022</div>
         </div>
-        <div class="w3-col" style="width: 200px;">
-            <a href="images/recortes_prensa/2021.10.13. Atlantico.jpg" target="_blank" >
-            <img src="images/recortes_prensa/2021.10.13. Atlantico.jpg" alt="Periodico_atlantico" style="height:120px">
+        <div class="w3-col w3-quarter w3-margin-bottom">
+            <a href="images/recortes_prensa/2022.08.02_FaroDeVigo.jpeg" target="_blank">
+                <img src="images/recortes_prensa/2022.08.02_FaroDeVigo.jpeg" alt="Faro de Vigo" style="width:100%; max-height:200px; object-fit:cover;">
             </a>
-            <div class="w3-padding date" style="font-size: 8px;">October 13,2021</div>
+            <div class="w3-padding date">August 02, 2022</div>
         </div>
-        <div class="w3-col" style="width: 200px;">
-            <a href="images/recortes_prensa/2021.10.13. La Voz de Galicia.jpg" target="_blank" >
-            <img src="images/recortes_prensa/2021.10.13. La Voz de Galicia.jpg" alt="Periodico_lavozdegalicia" style="height:120px">
+        <div class="w3-col w3-quarter w3-margin-bottom">
+            <a href="images/recortes_prensa/20220805_LaRevista.jpg" target="_blank">
+                <img src="images/recortes_prensa/20220805_LaRevista.jpg" alt="La Revista" style="width:100%; max-height:200px; object-fit:cover;">
             </a>
-            <div class="w3-padding date" style="font-size: 8px;">October 13,2021</div>
+            <div class="w3-padding date">August 05, 2022</div>
         </div>
-        <div class="w3-col" style="width: 200px;" >
-            <a href="images/recortes_prensa/FarodeVigoIA.jpg" target="_blank" >
-            <img src="images/recortes_prensa/FarodeVigoIA.jpg" alt="Periodico_farodevigo" style="height:120px">
+        <div class="w3-col w3-quarter w3-margin-bottom">
+            <a href="images/recortes_prensa/2021.10.13. Atlantico.jpg" target="_blank">
+                <img src="images/recortes_prensa/2021.10.13. Atlantico.jpg" alt="Periodico Atlantico" style="width:100%; max-height:200px; object-fit:cover;">
             </a>
-            <div class="w3-padding date" style="font-size: 8px;">October 13,2021</div>
+            <div class="w3-padding date">October 13, 2021</div>
         </div>
-        <div class="w3-col" style="width: 200px;" >
-            <a href="images/recortes_prensa/2022.08.02_FaroDeVigo.jpeg" target="_blank" >
-            <img src="images/recortes_prensa/2022.08.02_FaroDeVigo.jpeg" alt="Faro de Vigo" style="height:120px">
+        <div class="w3-col w3-quarter w3-margin-bottom">
+            <a href="images/recortes_prensa/2021.10.13. La Voz de Galicia.jpg" target="_blank">
+                <img src="images/recortes_prensa/2021.10.13. La Voz de Galicia.jpg" alt="La Voz de Galicia" style="width:100%; max-height:200px; object-fit:cover;">
             </a>
-            <div class="w3-padding date" style="font-size: 8px;">August 02,2022</div>
+            <div class="w3-padding date">October 13, 2021</div>
         </div>
-        <div class="w3-col" style="width: 200px;" >
-            <a href="images/recortes_prensa/20220805_LaRevista.jpg" target="_blank" >
-            <img src="images/recortes_prensa/20220805_LaRevista.jpg" alt="LaRevista" style="height:120px">
+        <div class="w3-col w3-quarter w3-margin-bottom">
+            <a href="images/recortes_prensa/FarodeVigoIA.jpg" target="_blank">
+                <img src="images/recortes_prensa/FarodeVigoIA.jpg" alt="Faro de Vigo" style="width:100%; max-height:200px; object-fit:cover;">
             </a>
-            <div class="w3-padding date" style="font-size: 8px;">August 05,2022</div>
+            <div class="w3-padding date">October 13, 2021</div>
         </div>
     </div>
     <br>
-    
+
 </div>
 
+<!-- Footer -->
+<div id="media" class="w3-row w3-padding-64" style="background-color: aquamarine; margin-top: 100px;">
 
-<script src="src/news.js">
-   
+  <div class="w3-half w3-container w3-margin-bottom w3-center socialMediaLinks">
+    <a href="https://twitter.com/artpoet2" class="fa fa-twitter" target="_blank"> </a>
+    <a href="https://www.facebook.com/marcosmaniquies" class="fa fa-facebook-official" target="_blank"></a>
+    <a href="https://www.instagram.com/marcos_delafuente/" class="fa fa-instagram" target="_blank"></a>
+    <a href="https://www.youtube.com/user/Waskoi" class="fa fa-youtube" target="_blank"></a>
+    <a href="https://github.com/Poems-AI" class="fa fa-github" target="_blank"></a>
+  </div>
+
+  <div id="contact" class="w3-half w3-container w3-center contact-form-container">
+    <iframe src="https://cdn.forms-content.sg-form.com/a8ecc6a8-845b-11ec-a482-e23143a44877" class="screen-body" title="Contact Form"></iframe>
+  </div>
+</div>
+
+<footer class="w3-container w3-center w3-padding-64">
+  <span>&#169;</span> Poetry+AI=ART 2022, All Rights Reserved
+</footer>
+
+<script src="src/news.js"></script>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
 </script>
 
   <!-- Matomo -->
