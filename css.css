@@ -76,10 +76,10 @@
   .right_menu{
     position: fixed;
     right: 20px;
-    top: 20px;
+    top: 5px;
     width: auto;
-    padding: 20px;
-    font-size: 50px;
+    padding: 5px;
+    font-size: 25px;
     cursor: pointer;
     transition: 0.3s;
     z-index: 1200;
@@ -565,10 +565,10 @@ footer.w3-container.header-container {
   .right_menu {
     position: fixed;
     right: 16px;
-    top: 16px;
+    top: 5px;
     width: auto;
-    padding: 8px 16px;
-    font-size: 36px;
+    padding: 5px 8px;
+    font-size: 25px;
     z-index: 998;
   }
 
