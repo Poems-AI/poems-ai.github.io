@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="ios-fixes.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -14,6 +15,17 @@
    </style>
 </head>
 <body>
+  
+<script>
+    // Script to fix 100vh issue on iOS
+    function setVH() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    setVH();
+    window.addEventListener('resize', setVH);
+</script>
   
 
   <!-- Sidebar (hidden by default) -->
@@ -145,177 +157,9 @@
 
 <!-- Events -->
 <h1 id="Events" class="secTitle" >Events</h1>
-<div class="w3-row w3-padding-32" >
+<div id="events-container" class="w3-row w3-padding-32" >
 
-  <div class="w3-third w3-container w3-padding-16 " >
-    <div class="eventsContent">
-      <div class="w3-half w3-container">
-      <img src="events/Norristown.png" alt="One Book One Norristown" class="eventsLogo">
-      </div>
-      <div class="w3-half w3-container w3-center ">
-        <a href="https://www.nasd.k12.pa.us/article/1872422?fbclid=IwZXh0bgNhZW0CMTEAAR0L-dO8c8lf2tVTAkDub6hZ1or0GS6ayE7QEjcyL8DneRKFDNeH_QG64iA_aem_e6c_FF9RAxv5BGfvp2vh3w" target="_blank"><p>One Book One Norristown, November 15, 2024. </p></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-third w3-container w3-padding-16 " >
-    <div class="eventsContent">
-      <div class="w3-half w3-container">
-      <img src="events/iati.png" alt="Verse and Vision: Poetic Landscapes in Multimedia" class="eventsLogo">
-      </div>
-      <div class="w3-half w3-container w3-center ">
-        <a href="https://www.youtube.com/watch?v=ZltLK04ZYQY" target="_blank"><p>PAM: Performing Arts Marathon 2024. Friday, October 11</p></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-third w3-container w3-padding-16 " >
-    <div class="eventsContent">
-      <div class="w3-half w3-container">
-      <img src="events/ExpoArtAshe_2023.jpg" alt="Virtual Gallery, Metaverse." class="eventsLogo">
-      </div>
-      <div class="w3-half w3-container w3-center ">
-        <a href="https://www.spatial.io/s/EXPO-ART-ASHE-2023-G-LINKS-63f65dc32ba92dce71d93f60?share=5311307412533548143 " target="_blank"><p>Expo Art ASHÉ 2023. Since Oct. 2023 Poetry+AI=Art has virtual exposition in the gallery under Marcos de la Fuente.</p></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-third w3-container w3-padding-16 " >
-    <div class="eventsContent">
-      <div class="w3-half w3-container">
-      <img src="events/lumeStudios.jpg" alt="The Poet Vs The Machine." class="eventsLogo">
-      </div>
-      <div class="w3-half w3-container w3-center ">
-        <a href= "https://youtu.be/0HhIeaeTxHI?si=XKDBz5habQp2S7Qg" target="_blank"><p>Lume Studios, Sep 2023.</p></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-third w3-container w3-padding-16 " >
-    <div class="eventsContent">
-      <div class="w3-half w3-container">
-      <img src="events/ELO2023.jpg" alt="Exhibition 2 Resistance, Coimbra, ELO2023." class="eventsLogo">
-      </div>
-      <div class="w3-half w3-container w3-center ">
-        <a href="https://eloconference2023exhibitions.wordpress.com/exhibition2_resistance/ai-poetry-voice-chain/" target="_blank"><p>AI-POETRY VOICE CHAIN, Coimbra, ELO2023, July 2023.</p></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-third w3-container w3-padding-16 " >
-    <div class="eventsContent">
-      <div class="w3-half w3-container">
-      <img src="events/ELO2023.jpg" alt="“The Poet vs The Machine” live performance, Coimbra, ELO2023." class="eventsLogo">
-      </div>
-      <div class="w3-half w3-container w3-center ">
-        <a href="https://ucpages.uc.pt/en/events/overcoming-divides-electronic-literature-and-social-change/performances/" target="_blank"><p>“The Poet vs The Machine”, Coimbra, ELO2023, July 2023.</p></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-third w3-container w3-padding-16 " >
-    <div class="eventsContent">
-      <div class="w3-half w3-container">
-      <img src="events/SuttonStudios.jpg" alt="Gran Opening Party SuttonStudios, Brooklyn." class="eventsLogo">
-      </div>
-      <div class="w3-half w3-container w3-center ">
-        <a href="https://www.eventbrite.com/e/join-100-sutton-studios-opening-party-on-december-10th-i-730pm-2am-tickets-469388773457?aff=ebdssbdestsearch" target="_blank"><p>ButtonStudios. Dec 10, 22.</p></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-third w3-container w3-padding-16 " >
-    <div class="eventsContent">
-      <div class="w3-half w3-container">
-      <img src="events/MiamiLibrary.png" alt="Miami Library, Miami." class="eventsLogo">
-      </div>
-      <div class="w3-half w3-container w3-center ">
-        <a href="https://www.instagram.com/p/ClmrVzBAIvy/" target="_blank"><p>Miami Library. Nov 30, 22.</p></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-third w3-container w3-padding-16 " >
-    <div class="eventsContent">
-      <div class="w3-half w3-container">
-      <img src="events/CADAF_NYC_WithTheVerseVerse.png" alt="WEB3 NYC Gallery, NYC." class="eventsLogo">
-      </div>
-      <div class="w3-half w3-container w3-center ">
-        <a href="https://youtu.be/KLLCEItMe-Y" target="_blank"><p>CADAF NYC. Nov 12, 22.</p></a>
-      </div>
-    </div>
-  </div>
-
-    <div class="w3-third w3-container w3-padding-16 " >
-      <div class="eventsContent">
-        <div class="w3-half w3-container">
-        <img src="events/PoesiaEnRiba.jpg" alt="Poesia Performatica No Museo Etnoloxico Ribadavia, Ourense, Spain." class="eventsLogo">
-        </div>
-        <div class="w3-half w3-container w3-center ">
-          <a href="https://youtu.be/KMDhAaSWM14" target="_blank"><p>Poesia en Riba. Aug 5, 22.</p></a>
-        </div>
-      </div>
-  </div>
-
-    <div class="w3-third w3-container w3-padding-16 " >
-      <div class="eventsContent">
-        <div class="w3-half w3-container">
-        <img src="events/Bowery_NFTnyc.jpg" alt="Bowery NFT_NYC, NYC" class="eventsLogo">
-        </div>
-        <div class="w3-half w3-container w3-center ">
-          <a href="https://fb.watch/dQf_S6ZhG6/" target="_blank"><p>Bowery Poetry. Jun 22, 22.</p></a>
-        </div>
-      </div>
-    </div>
-  
-
-    <div class="w3-third w3-container w3-padding-16  " >
-      <div class="eventsContent">
-        <div class="w3-half w3-container">
-        <img src="events/alegria.jpg" alt="Fiesta Alegria, NYC" class="eventsLogo">
-        </div>
-        <div class="w3-half w3-container w3-padding w3-center">
-          <a href="https://shotgun.live/events/let-s-boogie-in-nyc" target="_blank"><p>Nublu, NYC. Apr 15, 22.</p></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="w3-third w3-container w3-padding-16 " >
-      <div class="eventsContent">
-        <div class="w3-half w3-container">
-        <img src="events/bilia.jpg" alt="Bilia, bienal latinoamericana de inteligencia artificial ,Mexico" class="eventsLogo">
-        </div>
-        <div class="w3-half w3-container w3-padding w3-center">
-          <a href="https://youtu.be/WrE0JOXeLj4" target="_blank"><p>Online, Drop NFT. Apr 08, 22.</p></a>
-        </div>
-      </div>
-    </div>
-  
-
-    <div class="w3-third w3-container w3-padding-16 " >
-      <div class="eventsContent">
-        <div class="w3-half w3-container">
-        <img src="events/themynth_v2.jpg" alt="The Mynth Gallery, NYC" class="eventsLogo">
-        </div>
-        <div class="w3-half w3-container w3-padding w3-center">
-          <a href="https://youtu.be/m8NleslgeAk" target="_blank" ><p>The Poet Vs the machine, location The Mynth Gallery, New York city. Nov 20, 21.</p></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="w3-third w3-container w3-padding-16" >
-      <div class="eventsContent">
-        <div class="w3-half w3-container">
-        <img src="events/elPoetaVsLaMaquina.jpg" alt="Vialia, Vigo" class="eventsLogo">
-        </div>
-        <div class="w3-half w3-container w3-padding w3-center">
-          <a href="https://youtu.be/0dQyMTqAj5A" target="_blank"><p>El Poeta Vs la maquina, Vigo. Oct 13, 21.</p></a>
-        </div>
-      </div>
-    </div>
- 
 </div>
-
 
     
 <!-- Footer -->
@@ -339,6 +183,7 @@
 <footer class="w3-container w3-center w3-padding-64" >
       <span>&#169;</span> Poetry+AI=ART 2025, All Rights Reserved</footer>
 
+<script src="js/events.js"></script>
 <script>
     // Script to open and close sidebar
     function w3_open() {
