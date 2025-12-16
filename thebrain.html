@@ -21,6 +21,111 @@
         .header {
             margin-top: 20px;
         }
+        /* Modern AI interaction styling */
+        .ai-section {
+            background: linear-gradient(135deg, rgba(20,20,20,0.95) 0%, rgba(40,40,80,0.95) 100%);
+            border-radius: 20px;
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(127,255,212,0.2);
+        }
+        .ai-input-container {
+            position: relative;
+            margin: 30px 0;
+        }
+        .ai-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(127,255,212,0.3);
+            border-radius: 15px;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .ai-input:focus {
+            outline: none;
+            border-color: rgb(127,255,212);
+            box-shadow: 0 0 20px rgba(127,255,212,0.3);
+            transform: translateY(-2px);
+        }
+        .ai-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        .ai-button {
+            background: linear-gradient(135deg, rgb(127,255,212) 0%, rgb(100,200,180) 100%);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(127,255,212,0.4);
+        }
+        .ai-button:active {
+            transform: translateY(-1px);
+        }
+        .poem-output {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid rgb(127,255,212);
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+        .loading-container {
+            margin: 20px 0;
+        }
+        .loading-bar {
+            background: rgba(127,255,212,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 6px;
+        }
+        .loading-progress {
+            background: linear-gradient(90deg, rgb(127,255,212), rgb(100,200,180));
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: rgb(127,255,212);
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(127,255,212,0.3);
+        }
+        .brain-sculpture-section {
+            background: rgba(20,20,20,0.7);
+            border-radius: 20px;
+            margin: 50px auto;
+            max-width: 1000px;
+            padding: 40px;
+            text-align: center;
+        }
+        .brain-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+        }
+        .brain-image:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -68,59 +173,44 @@
     </div>
     
 
-    <div class="background_gradient "  >  
-        <div class="digitaltwin w3-container  w3-center w3-padding-32" id="AI" >  
+    <div class="background_gradient">  
+        <div class="ai-section" id="AI">  
+            <h2 class="section-title">Interact with the AI</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: rgba(255,255,255,0.8);">Write a sentence and let the artificial intelligence complete your poem</p>
             
-            <h3 style="color: #fff;margin-top: 100px">Interact with the AI</h3><br>
-            
-            <div class="w3-center w3-margin-bottom">
-            <input id="poeminput" class=" w3-round-large" type="text" size="40" style=" height:32px; text-align: center;" onkeydown="generate(this)" placeholder="write a sentence here"><br> <br> 
+            <div class="ai-input-container">
+                <input id="poeminput" class="ai-input" type="text" onkeydown="generate(this)" placeholder="Write a sentence here to start your poem...">
             </div>
             
-            <span id="spinner" class="spinner"></span>
-            <button class=" button-50 " onclick="generatePoem()">Generate poem</button>
-            
-            <div id="loading" class="w3-container w3-center w3-center loader">
-            
-            <div class="w3-border w3-center">
-                <div id="loadingbar" class="w3-grey " style="height:24px;width:0%"> </div>
-            </div>
+            <div style="text-align: center; margin: 30px 0;">
+                <span id="spinner" class="spinner"></span>
+                <button class="ai-button" onclick="generatePoem()">✨ Generate Poem ✨</button>
             </div>
             
-            <div class="w3-row-padding w3-padding-16 w3-center" >
-                <pre id="poemoutput"  class="digitaltwinpoem " ></pre><br><br>
-
-            <!-- <pre id="poemoutput"  class=" blurred-box" ></pre><br><br> -->
+            <div id="loading" class="loading-container" style="display: none;">
+                <div class="loading-bar">
+                    <div id="loadingbar" class="loading-progress" style="width:0%"></div>
+                </div>
+                <p style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.7);">The AI is crafting your poem...</p>
             </div>
-                
+            
+            <div id="poemoutput" class="poem-output" style="display: none;"></div>
         </div>
-
-        
     </div>
 
-    <div class="digitaltwin w3-container  w3-center w3-padding-32"  style="color: #fff;margin-top: 100px">
-
-        <h3 cstyle="color: #fff;margin-top: 100px">Poet Digital Brain</h3><br>
-
-        <p>
-            In this space you can find also the how we connect the AI and physical components. </p>
+    <div class="brain-sculpture-section">
+        <h2 class="section-title">Poet Digital Brain</h2>
+        <p style="margin-bottom: 30px; color: rgba(255,255,255,0.8);">Discover how we connect AI with physical components</p>
         
-        <img class="poetdigitalBrain" src="/images/poet-digial-brain.jpg" alt="poet ditial brain sculture">
-
-        <p>   One of our first proposals is to embed the AI model in an interactive sculpture. </p>
-        <p> 
-              In this case we represent how the creativity of users flows from their hands to the machine and vice versa.
-
-              For achieve that we use a physical typewriter keyboard like interation piece, and how it is the starting point of creativity, allowing to create the connection between the user and the the AI, represented by a brain sculpture.
-
-              Inside the brain we add a computer with the pre-trained AI model, that generate a poem base in a sentence that the user provide. 
-
-              We create this peice like a autonomous experience, for that we include as part of this piece a pico projector that facilitates
-              display the interaction between the user and the AI.
-            
-        </p>
-
+        <img class="brain-image" src="/images/poet-digial-brain.jpg" alt="Poet digital brain sculpture">
         
+        <div style="max-width: 800px; margin: 30px auto; text-align: left;">
+            <p style="margin: 20px 0;">One of our first proposals is to embed the AI model in an interactive sculpture.</p>
+            <p style="margin: 20px 0;">We represent how the creativity of users flows from their hands to the machine and vice versa.</p>
+            <p style="margin: 20px 0;">We use a physical typewriter keyboard as the interaction piece, the starting point of creativity, allowing us to create the connection between the user and the AI, represented by a brain sculpture.</p>
+            <p style="margin: 20px 0;">Inside the brain we add a computer with the pre-trained AI model, that generates a poem based on a sentence that the user provides.</p>
+            <p style="margin: 20px 0;">We create this piece as an autonomous experience, including a pico projector that facilitates displaying the interaction between the user and the AI.</p>
+        </div>
     </div>
     <!-- Footer -->
 <div id="media" class=" w3-row w3-padding-64 " style="background-color: aquamarine; margin-top: 200px;">
@@ -153,6 +243,77 @@
     function w3_close() {
       document.getElementById("mySidebar").style.display = "none";
     }
+
+    // Enhanced UI interactions
+    document.addEventListener('DOMContentLoaded', function() {
+        const input = document.getElementById('poeminput');
+        const button = document.querySelector('.ai-button');
+        const loadingDiv = document.getElementById('loading');
+        const outputDiv = document.getElementById('poemoutput');
+        
+        // Add Enter key support
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                generatePoem();
+            }
+        });
+        
+        // Enhanced generatePoem function
+        window.enhancedGeneratePoem = function() {
+            const inputText = input.value.trim();
+            if (!inputText) {
+                input.focus();
+                input.style.borderColor = '#ff6b6b';
+                setTimeout(() => {
+                    input.style.borderColor = 'rgba(127,255,212,0.3)';
+                }, 1000);
+                return;
+            }
+            
+            // Show loading state
+            loadingDiv.style.display = 'block';
+            outputDiv.style.display = 'none';
+            button.disabled = true;
+            button.innerHTML = '🤔 Thinking...';
+            
+            // Simulate AI processing with progress bar
+            let progress = 0;
+            const progressBar = document.getElementById('loadingbar');
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    // Call original generate function if it exists
+                    if (window.generatePoem && typeof window.generatePoem === 'function') {
+                        try {
+                            window.generatePoem();
+                        } catch (e) {
+                            showResult('Your poem is being generated... Please make sure the backend is running.');
+                        }
+                    } else {
+                        showResult('Your poem is being generated... Please make sure the backend is running.');
+                    }
+                }
+            }, 100);
+        };
+        
+        function showResult(text) {
+            loadingDiv.style.display = 'none';
+            outputDiv.style.display = 'block';
+            outputDiv.textContent = text;
+            button.disabled = false;
+            button.innerHTML = '✨ Generate Poem ✨';
+            
+            // Smooth scroll to result
+            outputDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Override the button onclick
+        button.onclick = window.enhancedGeneratePoem;
+    });
 
 </script>
 
