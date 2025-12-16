@@ -74,15 +74,11 @@
   }
 
   .right_menu{
-    position: fixed;
-    right: 20px;
-    top: 5px;
     width: auto;
     padding: 5px;
     font-size: 50px;
     cursor: pointer;
     transition: 0.3s;
-    z-index: 1200;
   }
 
   .right_menu:hover {
@@ -415,7 +411,10 @@ button {
   position: relative;
   margin-top: 150px;
   padding-left: 16px;
-  z-index: 3
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  display: inline-block;
 }
 
 .eventsContent{
@@ -490,6 +489,14 @@ button {
   background: rgb(255, 255, 255) !important;
   padding: 6px 8px !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@media screen and (min-width: 601px) {
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 /* Ensure footer stays at bottom - NOT fixed */
@@ -568,7 +575,7 @@ footer.w3-container.header-container {
 
   .headerLogo {
     width: 20%;
-    max-width: 75px;
+    max-width: 100px;
     display: block;
   }
 
@@ -754,6 +761,12 @@ footer.w3-container.header-container {
 
   .headerLogo {
     width: 7.5%;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .headerLogo {
+    width: 8%; /* Adjust this percentage as needed */
   }
 }
 
