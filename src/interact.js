@@ -97,7 +97,7 @@ function generatePoem(){
     let url_length = url_array.length
 
     // let urlAPI = "https://poems.asst.workers.dev"
-    let urlAPI = "https://api-inference.huggingface.co/models/ismaelfaro/gpt2-poems"
+    let urlAPI = "https://router.huggingface.co/models/ismaelfaro/gpt2-poems"
     var browserLanguage = navigator.language
     // if (browserLanguage.split("-")[0] == "es"){
     if (url_array[url_length-2] == "es"){
