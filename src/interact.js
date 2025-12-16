@@ -120,7 +120,7 @@ function generatePoem(){
     FirstRequestToGraph(urlAPI,poem)
       .then(data => {
           console.log(data, checkingAPIeventID)
-          if("error" in data && !checkingAPIeventID) {
+          if(data && "error" in data && !checkingAPIeventID) {
             checkingAPIeventID = setInterval(loadingModel, 1000)
             console.log(data)
             return
@@ -129,6 +129,14 @@ function generatePoem(){
             loadingElement.style.display = "none"
             loadingPercent = 0
           }
+          
+          if(!data || !data[0] || !data[0].generated_text) {
+            console.error('Invalid API response:', data)
+            output.innerText = "Error generating poem. Please try again."
+            spinner.style.visibility = "hidden"
+            return
+          }
+          
           toShow = data[0].generated_text
           output.innerText = cleanPoem(toShow.slice(0, toShow.length))
           
