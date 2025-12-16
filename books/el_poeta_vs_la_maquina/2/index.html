@@ -28,11 +28,159 @@
             text-align: center;
             z-index: 10;
         }
+        
+        /* Debug UI Styles */
+        #debugUI {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 1000;
+            min-width: 280px;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: none; /* Hidden by default */
+        }
+        
+        .debug-section {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+        
+        .debug-control {
+            margin: 8px 0;
+        }
+        
+        .debug-control label {
+            display: block;
+            margin-bottom: 3px;
+            color: #ccc;
+            font-size: 11px;
+        }
+        
+        .debug-control input[type="range"] {
+            width: 100%;
+            margin: 3px 0;
+        }
+        
+        .debug-control input[type="number"] {
+            width: 70px;
+            padding: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #666;
+            color: white;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        
+        .position-display {
+            background: rgba(0, 100, 0, 0.3);
+            padding: 8px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border: 1px solid #0a0;
+            font-size: 11px;
+        }
+        
+        .debug-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            margin: 3px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        
+        .debug-button:hover {
+            background: #45a049;
+        }
+        
+        .toggle-button {
+            background: #2196F3;
+        }
+        
+        .toggle-button:hover {
+            background: #1976D2;
+        }
     </style>
 </head>
 <body>
     <div id="container"></div>
     <div id="loading">Loading Model...</div>
+    
+    <!-- Debug UI -->
+    <div id="debugUI">
+        <h3 style="margin-top: 0; color: #4CAF50;">Camera Debug Controls</h3>
+        
+        <div class="debug-section">
+            <h4 style="margin: 0 0 10px 0; color: #FFA500;">Camera Position</h4>
+            <div class="debug-control">
+                <label>Camera X: <span id="xValue">-4.85</span></label>
+                <input type="range" id="cameraX" min="-20" max="20" step="0.1" value="-4.852709346677471">
+                <input type="number" id="cameraXNum" step="0.1" value="-4.852709346677471">
+            </div>
+            
+            <div class="debug-control">
+                <label>Camera Y: <span id="yValue">-0.09</span></label>
+                <input type="range" id="cameraY" min="-10" max="20" step="0.1" value="-0.08806096900571984">
+                <input type="number" id="cameraYNum" step="0.1" value="-0.08806096900571984">
+            </div>
+            
+            <div class="debug-control">
+                <label>Camera Z: <span id="zValue">0.82</span></label>
+                <input type="range" id="cameraZ" min="-20" max="20" step="0.1" value="0.8192045851391442">
+                <input type="number" id="cameraZNum" step="0.1" value="0.8192045851391442">
+            </div>
+        </div>
+        
+        <div class="debug-section">
+            <h4 style="margin: 0 0 10px 0; color: #FFA500;">Camera Rotation (Euler)</h4>
+            <div class="debug-control">
+                <label>Rotation X: <span id="rotXValue">-2.99</span> (pitch)</label>
+                <input type="range" id="rotationX" min="-3.14159" max="3.14159" step="0.01" value="-2.994876697167414">
+                <input type="number" id="rotationXNum" step="0.01" value="-2.994876697167414">
+            </div>
+            
+            <div class="debug-control">
+                <label>Rotation Y: <span id="rotYValue">-0.62</span> (yaw)</label>
+                <input type="range" id="rotationY" min="-3.14159" max="3.14159" step="0.01" value="-0.6151651955789119">
+                <input type="number" id="rotationYNum" step="0.01" value="-0.6151651955789119">
+            </div>
+            
+            <div class="debug-control">
+                <label>Rotation Z: <span id="rotZValue">-3.06</span> (roll)</label>
+                <input type="range" id="rotationZ" min="-3.14159" max="3.14159" step="0.01" value="-3.0565168977713344">
+                <input type="number" id="rotationZNum" step="0.01" value="-3.0565168977713344">
+            </div>
+        </div>
+        
+        <div class="position-display">
+            <strong>Current State:</strong><br>
+            Position: (<span id="currentCamPos">-4.85, -0.09, 0.82</span>)<br>
+            Rotation: (<span id="currentRotation">-2.99, -0.62, -3.06</span>)<br>
+            Target: (<span id="currentTargetPos">auto</span>)
+        </div>
+        
+        <button class="debug-button" onclick="resetPosition()">Reset Position</button>
+        <button class="debug-button" onclick="resetRotation()">Reset Rotation</button>
+        <button class="debug-button toggle-button" onclick="toggleRotation()">
+            <span id="rotationStatus">Pause Model Rotation</span>
+        </button>
+        <button class="debug-button" onclick="copyAll()">Copy All Settings</button>
+        
+        <div style="margin-top: 10px; font-size: 10px; color: #888;">
+            Adjust camera position and rotation. Model rotation can be paused for easier setup.
+        </div>
+    </div>
 
     <!-- Import Three.js library -->
     <script type="importmap">
@@ -55,23 +203,19 @@
       let scene, camera, renderer, controls;
       let model;
       let idleTimerId = null; // To store the timeout ID
+      let isRotating = true; // Track rotation state for debug UI
+      let debugVisible = false; // Track debug UI visibility
 
       // --- Configuration ---
       const modelPath = 'botswana.glb';
       const modelCenter = new THREE.Vector3(0, 0, 0); // Assuming model is centered here
-      const autoRotateSpeed = -0.5; // Negative for counter-clockwise, adjust speed as needed (default is 2.0)
+      const autoRotateSpeed = -0.25; // Negative for counter-clockwise, half the previous speed
       const idleTimeoutDuration = 1000; // 5 seconds in milliseconds << Corrected comment (was 5)
 
-      // --- Initial View Settings (Approximating Image 2) ---
-      const initialCameraRadius = 8;
-      const initialCameraHeight = 6;
-      const initialCameraLookAtHeight = 0.1;
-
-      const targetPoint = new THREE.Vector3(
-          -0.5,
-          initialCameraLookAtHeight,
-          10
-      );
+      // --- Initial View Settings (Optimized camera position and rotation) ---
+      const initialCameraPosition = new THREE.Vector3(-4.852709346677471, -0.08806096900571984, 0.8192045851391442);
+      const initialCameraRotation = new THREE.Vector3(-2.994876697167414, -0.6151651955789119, -3.0565168977713344);
+      const targetPoint = new THREE.Vector3(0, -1.6, 4.1);
 
       function init() {
           const container = document.getElementById('container');
@@ -87,7 +231,7 @@
           const near = 0.1;
           const far = 1000;
           camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-          camera.position.set(initialCameraRadius, initialCameraHeight, -2.5);
+          camera.position.copy(initialCameraPosition); // Position camera at optimized location
           // camera.lookAt(targetPoint); // lookAt is managed by OrbitControls target
           // camera.rotateZ(Math.PI / 2); // Rotating camera directly can conflict with OrbitControls, set initial target/position instead
 
@@ -99,20 +243,23 @@
 
           // --- Controls ---
           controls = new OrbitControls(camera, renderer.domElement);
-          // Set the initial look-at point for the controls
-          controls.target.set(modelCenter.x, initialCameraLookAtHeight, modelCenter.z); // Let's look at the defined center initially
-          // If you want the specific targetPoint:
-          // controls.target.copy(targetPoint); // Uncomment this if you prefer the specific target point
+          
+          // Set target close to camera position for pivot rotation
+          controls.target.copy(camera.position);
+          controls.target.z += 0.1; // Small offset to establish direction
 
           controls.enableDamping = true;
           controls.dampingFactor = 0.05;
-          controls.screenSpacePanning = false; // Panning moves the target
+          controls.screenSpacePanning = false;
 
-          controls.autoRotate = true;
-          controls.autoRotateSpeed = autoRotateSpeed;
+          // Enable camera rotation (pivoting in place)
+          controls.enableRotate = true;
+          controls.enableZoom = false; // Disable zoom to keep camera in position
+          controls.enablePan = false; // Disable panning
 
-          controls.minDistance = 1;
-          controls.maxDistance = 50;
+          // Set very tight distance constraints to keep camera pivoting in place
+          controls.minDistance = 0.1;
+          controls.maxDistance = 0.1;
 
 
           // --- Lighting ---
@@ -135,7 +282,7 @@
                   console.log("Model loaded successfully");
                   model = gltf.scene;
 
-                  // <<< --- START: Set materials to DoubleSide --- >>>
+                  // <<< --- START: Enhanced material processing --- >>>
                   model.traverse((object) => {
                       if (object.isMesh) {
                           // Check if the material is an array (for multi-material objects)
@@ -143,18 +290,64 @@
                               object.material.forEach(material => {
                                   if (material) { // Check if material exists
                                       material.side = THREE.DoubleSide;
-                                      // Optional: If textures look weird after this, uncomment:
+                                      
+                                      // Make text materials brilliant white light
+                                      if (object.name.toLowerCase().includes('text') || 
+                                          material.name.toLowerCase().includes('text') ||
+                                          material.map && material.map.name.toLowerCase().includes('text')) {
+                                          
+                                          // Create brilliant white emissive material
+                                          material.emissive = new THREE.Color(0xffffff);
+                                          material.emissiveIntensity = 0.8;
+                                          material.color = new THREE.Color(0xffffff);
+                                          
+                                          // Add self-illumination
+                                          if (material.isMeshStandardMaterial || material.isMeshPhysicalMaterial) {
+                                              material.metalness = 0.1;
+                                              material.roughness = 0.2;
+                                          }
+                                      }
+                                      
                                       material.needsUpdate = true;
                                   }
                               });
                           } else if (object.material) { // Check if single material exists
                               object.material.side = THREE.DoubleSide;
-                              // Optional: If textures look weird after this, uncomment:
+                              
+                              // Debug: log object and material names to console
+                              console.log('Object name:', object.name, 'Material name:', object.material.name);
+                              
+                              // Make text materials brilliant white light
+                              if (object.name.toLowerCase().includes('text') || 
+                                  object.material.name.toLowerCase().includes('text') ||
+                                  (object.material.map && object.material.map.name.toLowerCase().includes('text')) ||
+                                  // Additional checks for common text material patterns
+                                  object.name.toLowerCase().includes('font') ||
+                                  object.name.toLowerCase().includes('letter') ||
+                                  object.material.name.toLowerCase().includes('font') ||
+                                  object.material.name.toLowerCase().includes('letter') ||
+                                  // Check for white/bright materials that might be text
+                                  (object.material.color && object.material.color.r > 0.8 && object.material.color.g > 0.8 && object.material.color.b > 0.8)) {
+                                  
+                                  console.log('Found text material:', object.name, object.material.name);
+                                  
+                                  // Create brilliant white emissive material
+                                  object.material.emissive = new THREE.Color(0xffffff);
+                                  object.material.emissiveIntensity = 1.2;
+                                  object.material.color = new THREE.Color(0xffffff);
+                                  
+                                  // Add self-illumination
+                                  if (object.material.isMeshStandardMaterial || object.material.isMeshPhysicalMaterial) {
+                                      object.material.metalness = 0.0;
+                                      object.material.roughness = 0.1;
+                                  }
+                              }
+                              
                               object.material.needsUpdate = true;
                           }
                       }
                   });
-                  // <<< --- END: Set materials to DoubleSide --- >>>
+                  // <<< --- END: Enhanced material processing --- >>>
 
 
                   // --- Center Model --- (Still important!)
@@ -170,6 +363,15 @@
 
                   // Apply initial position/target to controls AFTER model potentially adjusted things
                   controls.update(); // Crucial to apply the new target/position
+                  
+                  // Set the exact rotation values
+                  camera.rotation.set(initialCameraRotation.x, initialCameraRotation.y, initialCameraRotation.z);
+                  
+                  // Disable controls briefly to preserve rotation
+                  controls.enabled = false;
+                  setTimeout(() => {
+                      controls.enabled = true;
+                  }, 100);
 
                   // Start animation loop ONLY after model is loaded
                   animate();
@@ -188,27 +390,7 @@
               }
           );
 
-          // --- Interaction Listeners for Auto-Rotate ---
-          controls.addEventListener('start', () => {
-              console.log("Interaction Start - Pausing Auto-Rotate");
-              controls.autoRotate = false;
-              if (idleTimerId !== null) {
-                  clearTimeout(idleTimerId);
-                  idleTimerId = null;
-              }
-          });
-
-          controls.addEventListener('end', () => {
-              console.log("Interaction End - Starting Idle Timer");
-              if (idleTimerId !== null) {
-                   clearTimeout(idleTimerId);
-              }
-              idleTimerId = setTimeout(() => {
-                  console.log("Idle Timeout - Resuming Auto-Rotate");
-                  controls.autoRotate = true;
-                  idleTimerId = null;
-              }, idleTimeoutDuration);
-          });
+          // No interaction listeners needed - model rotates continuously
 
           // --- Window Resize Listener ---
           window.addEventListener('resize', onWindowResize);
@@ -222,12 +404,214 @@
 
       function animate() {
           requestAnimationFrame(animate);
-          controls.update(); // Required for damping and auto-rotate
+          
+          // Rotate the model instead of the camera
+          if (model && isRotating) {
+              model.rotation.y += autoRotateSpeed * 0.01; // Convert speed to radians
+          }
+          
+          controls.update(); // Required for damping
+          
+          // Update debug UI only when visible
+          if (debugVisible) {
+              updateDebugDisplay();
+          }
+          
           renderer.render(scene, camera);
+      }
+      
+      // Function to update debug UI with current camera values (only when debug is visible)
+      function updateDebugDisplay() {
+          if (debugVisible && camera && document.getElementById('currentCamPos')) {
+              // Update position display
+              document.getElementById('currentCamPos').textContent = 
+                  `${camera.position.x.toFixed(1)}, ${camera.position.y.toFixed(1)}, ${camera.position.z.toFixed(1)}`;
+              
+              // Update rotation display
+              document.getElementById('currentRotation').textContent = 
+                  `${camera.rotation.x.toFixed(2)}, ${camera.rotation.y.toFixed(2)}, ${camera.rotation.z.toFixed(2)}`;
+              
+              // Update slider and input values
+              const posElements = ['cameraX', 'cameraY', 'cameraZ'];
+              const posValues = [camera.position.x, camera.position.y, camera.position.z];
+              const rotElements = ['rotationX', 'rotationY', 'rotationZ'];
+              const rotValues = [camera.rotation.x, camera.rotation.y, camera.rotation.z];
+              const displayElements = ['xValue', 'yValue', 'zValue', 'rotXValue', 'rotYValue', 'rotZValue'];
+              
+              for (let i = 0; i < 3; i++) {
+                  const posSlider = document.getElementById(posElements[i]);
+                  const posInput = document.getElementById(posElements[i] + 'Num');
+                  const rotSlider = document.getElementById(rotElements[i]);
+                  const rotInput = document.getElementById(rotElements[i] + 'Num');
+                  
+                  if (posSlider && posInput && posValues[i] !== undefined) {
+                      posSlider.value = posValues[i].toFixed(1);
+                      posInput.value = posValues[i].toFixed(1);
+                      const displayEl = document.getElementById(displayElements[i]);
+                      if (displayEl) displayEl.textContent = posValues[i].toFixed(1);
+                  }
+                  
+                  if (rotSlider && rotInput && rotValues[i] !== undefined) {
+                      rotSlider.value = rotValues[i].toFixed(2);
+                      rotInput.value = rotValues[i].toFixed(2);
+                      const displayEl = document.getElementById(displayElements[i + 3]);
+                      if (displayEl) displayEl.textContent = rotValues[i].toFixed(2);
+                  }
+              }
+          }
       }
 
       // --- Start ---
       init();
+
+      // Debug UI Functions
+      function setupDebugUI() {
+          // Get all the UI elements
+          const elements = {
+              cameraX: document.getElementById('cameraX'),
+              cameraY: document.getElementById('cameraY'),
+              cameraZ: document.getElementById('cameraZ'),
+              cameraXNum: document.getElementById('cameraXNum'),
+              cameraYNum: document.getElementById('cameraYNum'),
+              cameraZNum: document.getElementById('cameraZNum'),
+              rotationX: document.getElementById('rotationX'),
+              rotationY: document.getElementById('rotationY'),
+              rotationZ: document.getElementById('rotationZ'),
+              rotationXNum: document.getElementById('rotationXNum'),
+              rotationYNum: document.getElementById('rotationYNum'),
+              rotationZNum: document.getElementById('rotationZNum'),
+              xValue: document.getElementById('xValue'),
+              yValue: document.getElementById('yValue'),
+              zValue: document.getElementById('zValue'),
+              rotXValue: document.getElementById('rotXValue'),
+              rotYValue: document.getElementById('rotYValue'),
+              rotZValue: document.getElementById('rotZValue'),
+              currentCamPos: document.getElementById('currentCamPos'),
+              currentRotation: document.getElementById('currentRotation'),
+              currentTargetPos: document.getElementById('currentTargetPos')
+          };
+
+          // Update camera position (without interfering with controls)
+          function updateCameraPosition() {
+              const x = parseFloat(elements.cameraX.value);
+              const y = parseFloat(elements.cameraY.value);
+              const z = parseFloat(elements.cameraZ.value);
+              
+              camera.position.set(x, y, z);
+              
+              // Update displays
+              elements.xValue.textContent = x;
+              elements.yValue.textContent = y;
+              elements.zValue.textContent = z;
+              elements.cameraXNum.value = x;
+              elements.cameraYNum.value = y;
+              elements.cameraZNum.value = z;
+              elements.currentCamPos.textContent = `${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`;
+          }
+
+          // Update camera rotation (without interfering with controls)
+          function updateCameraRotation() {
+              const x = parseFloat(elements.rotationX.value);
+              const y = parseFloat(elements.rotationY.value);
+              const z = parseFloat(elements.rotationZ.value);
+              
+              camera.rotation.set(x, y, z);
+              
+              // Update displays
+              elements.rotXValue.textContent = x.toFixed(2);
+              elements.rotYValue.textContent = y.toFixed(2);
+              elements.rotZValue.textContent = z.toFixed(2);
+              elements.rotationXNum.value = x;
+              elements.rotationYNum.value = y;
+              elements.rotationZNum.value = z;
+              elements.currentRotation.textContent = `${x.toFixed(2)}, ${y.toFixed(2)}, ${z.toFixed(2)}`;
+          }
+
+          // Sync sliders with number inputs
+          function syncInputs(slider, numberInput, updateFunction) {
+              slider.addEventListener('input', () => {
+                  numberInput.value = slider.value;
+                  updateFunction();
+              });
+              numberInput.addEventListener('input', () => {
+                  slider.value = numberInput.value;
+                  updateFunction();
+              });
+          }
+
+          // Setup all syncing
+          syncInputs(elements.cameraX, elements.cameraXNum, updateCameraPosition);
+          syncInputs(elements.cameraY, elements.cameraYNum, updateCameraPosition);
+          syncInputs(elements.cameraZ, elements.cameraZNum, updateCameraPosition);
+          syncInputs(elements.rotationX, elements.rotationXNum, updateCameraRotation);
+          syncInputs(elements.rotationY, elements.rotationYNum, updateCameraRotation);
+          syncInputs(elements.rotationZ, elements.rotationZNum, updateCameraRotation);
+      }
+
+      // Global functions for buttons
+      window.resetPosition = function() {
+          document.getElementById('cameraX').value = -4.852709346677471;
+          document.getElementById('cameraY').value = -0.08806096900571984;
+          document.getElementById('cameraZ').value = 0.8192045851391442;
+          
+          document.getElementById('cameraX').dispatchEvent(new Event('input'));
+          document.getElementById('cameraY').dispatchEvent(new Event('input'));
+          document.getElementById('cameraZ').dispatchEvent(new Event('input'));
+      };
+
+      window.resetRotation = function() {
+          document.getElementById('rotationX').value = -2.994876697167414;
+          document.getElementById('rotationY').value = -0.6151651955789119;
+          document.getElementById('rotationZ').value = -3.0565168977713344;
+          
+          document.getElementById('rotationX').dispatchEvent(new Event('input'));
+          document.getElementById('rotationY').dispatchEvent(new Event('input'));
+          document.getElementById('rotationZ').dispatchEvent(new Event('input'));
+      };
+
+      window.toggleRotation = function() {
+          isRotating = !isRotating;
+          document.getElementById('rotationStatus').textContent = isRotating ? 'Pause Model Rotation' : 'Resume Model Rotation';
+      };
+
+      window.copyAll = function() {
+          const pos = `camera.position.set(${camera.position.x}, ${camera.position.y}, ${camera.position.z});`;
+          const rot = `camera.rotation.set(${camera.rotation.x}, ${camera.rotation.y}, ${camera.rotation.z});`;
+          const fullCode = `${pos}\n${rot}`;
+          
+          navigator.clipboard.writeText(fullCode).then(() => {
+              alert('Camera settings copied to clipboard!\n\n' + fullCode);
+          }).catch(() => {
+              const textArea = document.createElement('textarea');
+              textArea.value = fullCode;
+              document.body.appendChild(textArea);
+              textArea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textArea);
+              alert('Camera settings copied to clipboard!\n\n' + fullCode);
+          });
+      };
+
+      // Debug UI toggle with 'D' key      
+      function toggleDebugUI() {
+          debugVisible = !debugVisible;
+          const debugUI = document.getElementById('debugUI');
+          debugUI.style.display = debugVisible ? 'block' : 'none';
+          if (debugVisible) {
+              updateDebugDisplay(); // Update values when showing debug UI
+          }
+      }
+      
+      // Keyboard event listener
+      document.addEventListener('keydown', function(event) {
+          if (event.key.toLowerCase() === 'd') {
+              toggleDebugUI();
+              event.preventDefault(); // Prevent default 'd' key behavior
+          }
+      });
+
+      // Setup debug UI when page loads
+      window.addEventListener('DOMContentLoaded', setupDebugUI);
 
   </script>
 
