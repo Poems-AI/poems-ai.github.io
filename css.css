@@ -487,7 +487,7 @@ button {
   width: 100%;
   z-index: 1000;
   background: rgb(255, 255, 255) !important;
-  padding: 6px 8px !important;
+  padding: 2px 8px !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -767,6 +767,22 @@ footer.w3-container.header-container {
 @media screen and (min-width: 993px) {
   .headerLogo {
     width: 8%; /* Adjust this percentage as needed */
+  }
+}
+
+/* Desktop screens - 2x logo size, header height limit, and smaller titles */
+@media screen and (min-width: 1200px) {
+  .headerLogo {
+    width: 16%; /* 2x the original 8% size for desktop */
+  }
+  
+  .header-container {
+    max-height: 80px;
+    overflow: hidden;
+  }
+  
+  .secTitle {
+    font-size: 50px; /* Half the default 100px size */
   }
 }
 

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="ios-fixes.css">
     <link rel="stylesheet" href="css_metaverse.css">
     <link rel="stylesheet" href="nft.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
@@ -13,6 +14,12 @@
   
    <style>
         /* body,h1,h2,h3,h4,h5,h6,p {font-family: circular, 'segoe ui', sans-serif; color: white;} */
+        body {
+            padding-top: 120px !important;
+        }
+        .header {
+            margin-top: 20px;
+        }
         .center {
             display: block;
             margin-left: auto;
@@ -24,7 +31,37 @@
     </style>
 </head>
 <body>
-    <a href="index.en.html"><div class="arrow"> &larr;</div></a>
+  
+<script>
+    // Script to fix 100vh issue on iOS
+    function setVH() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    setVH();
+    window.addEventListener('resize', setVH);
+</script>
+  
+
+  <!-- Sidebar (hidden by default) -->
+  <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-right w3-black " style="display:none;z-index:1100;width:250px;max-width:80%;color: #000000;right:0;" id="mySidebar">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile" style="text-align: right;" >X</a>
+      <a href="index.en.html#projects" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Projects</a>
+      <a href="index.en.html#Events" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Events</a>
+      <a href="gallery.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile" target="_blank">Gallery</a>
+      <a href="index.en.html#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Contact</a>
+      <a href="prensa.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Press</a>
+      <a href="/books/el_poeta_vs_la_maquina/index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-mobile">Book</a>
+  </nav>
+
+
+<!-- Top menu -->
+  <div class="w3-container header-container w3-top" style="background: rgb(255, 255, 255); ">
+      <a href="index.html"><img src="images/Poetry+AI color-25.png" alt="Logo Poetry+AI=Art" class="headerLogo"></a>
+      <div class=" w3-right-align right_menu w3-white"  onclick="w3_open()" >☰</div>
+  </div>
+
    
     <div class="header">
         <img src="images/section_logo/Poetry+AI blanco-23_NFTsCollection.png" alt="logo NFTs collection" class="logo_head">
@@ -108,9 +145,9 @@
       <a href="https://github.com/Poems-AI" class="fa fa-github" target="_blank"></a>
     </div>
   
-    <div id="contact" class="w3-half w3-container ">
+    <div id="contact" class="w3-half w3-container w3-center contact-form-container">
   
-      <iframe src="https://cdn.forms-content.sg-form.com/a8ecc6a8-845b-11ec-a482-e23143a44877" class="screen-body" ></iframe>
+      <iframe src="https://cdn.forms-content.sg-form.com/a8ecc6a8-845b-11ec-a482-e23143a44877" class="screen-body" title="Contact Form"></iframe>
   
     </div>
   </div>
@@ -118,5 +155,18 @@
   <footer class="w3-container w3-center w3-padding-64" >
     <span>&#169;</span> Poetry+AI=ART 2025, All Rights Reserved
   </footer>
+
+<script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
+      
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+
+</script>
+
 </body>
 </html>
